@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "/logo.png";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation(); // Get the current location
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="bg-white">
-      <nav
-        aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 md:px-8"
-      >
+    <div className="fixed top-0 left-0 right-0 z-50 bg-gray-50">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 md:px-8">
         <div className="flex md:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
             <img alt="" src={logo} className="h-10 md:h-16 w-auto" />
@@ -23,28 +23,31 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(true)}
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           >
-            <i className=" text-2xl fas fa-bars"></i>
+            <i className="text-2xl fas fa-bars"></i>
           </button>
         </div>
         <PopoverGroup className="hidden md:flex md:gap-x-8 lg:gap-x-12 text-lg">
-          <Link to="/" className=" leading-6 text-gray-500 hover:text-primary">
+          <Link
+            to="/"
+            className={`leading-6 ${isActive("/") ? "text-primary" : "text-gray-500"} hover:text-primary`}
+          >
             Home
           </Link>
           <Link
             to="market"
-            className="leading-6 text-gray-500 hover:text-primary"
+            className={`leading-6 ${isActive("/market") ? "text-primary" : "text-gray-500"} hover:text-primary`}
           >
             Market
           </Link>
           <Link
             to="about"
-            className="leading-6 text-gray-500 hover:text-primary"
+            className={`leading-6 ${isActive("/about") ? "text-primary" : "text-gray-500"} hover:text-primary`}
           >
             About
           </Link>
           <Link
             to="contact"
-            className="leading-6 text-gray-500 hover:text-primary"
+            className={`leading-6 ${isActive("/contact") ? "text-primary" : "text-gray-500"} hover:text-primary`}
           >
             Contact
           </Link>
@@ -82,32 +85,32 @@ export default function Header() {
               <div className="space-y-2 py-6">
                 <Link
                   to="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-700 hover:bg-gray-50"
+                  className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 ${isActive("/") ? "text-primary" : "text-gray-700"} hover:bg-gray-50`}
                 >
                   Home
                 </Link>
                 <Link
                   to="market"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-700 hover:bg-gray-50"
+                  className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 ${isActive("/market") ? "text-primary" : "text-gray-700"} hover:bg-gray-50`}
                 >
                   Market
                 </Link>
                 <Link
                   to="about"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-700 hover:bg-gray-50"
+                  className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 ${isActive("/about") ? "text-primary" : "text-gray-700"} hover:bg-gray-50`}
                 >
                   About
                 </Link>
                 <Link
                   to="contact"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-700 hover:bg-gray-50"
+                  className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 ${isActive("/contact") ? "text-primary" : "text-gray-700"} hover:bg-gray-50`}
                 >
                   Contact
                 </Link>
               </div>
               <div className="py-6">
                 <Link
-                  to=""
+                  to="login"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
@@ -117,6 +120,6 @@ export default function Header() {
           </div>
         </DialogPanel>
       </Dialog>
-    </header>
+    </div>
   );
 }

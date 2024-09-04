@@ -10,10 +10,10 @@ function Signup() {
       />
 
       <div className="relative max-w-[26rem] md:max-w-[40rem] w-full space-y-3 mt-10 border p-10 rounded-3xl mx-auto my-32 bg-white">
-        <h1 className="text-3xl font-bold text-gray-800 max-w-screen-xl mx-auto pt-3 text-center">
-          Sign Up
+        <h1 className="text-2xl md:text-3xl font-bold text-gray-800 max-w-screen-xl mx-auto py-3 text-center">
+          Don't have an account?{" "}
+          <span className="text-primary">Register now</span>
         </h1>
-        <hr className="w-16 h-1 mx-auto my-2 bg-primary border-0 rounded" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-5">
           <div className="relative">

@@ -81,18 +81,10 @@ export default function Header() {
                   <div className="py-1">
                     <MenuItem>
                       <Link
-                        to="/addproduct"
+                        to="/profile"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
                       >
-                        Post product
-                      </Link>
-                    </MenuItem>
-                    <MenuItem>
-                      <Link
-                        to=""
-                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
-                      >
-                        History
+                        Dashboard
                       </Link>
                     </MenuItem>
 

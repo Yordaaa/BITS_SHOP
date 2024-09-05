@@ -29,10 +29,10 @@ function AddProduct() {
 
   return (
     <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
-        <div className="col-span-1 h-full">
+        <div className="col-span-1 h-full border-r-2 ">
             <SideNav />
         </div>
-      <div className="py-8 px-4 mx-auto w-full max-w-2xl col-span-3">
+      <div className="py-8 px-4 mx-auto w-full max-w-2xl col-span-3 ">
         <h2 className="mb-4 text-xl font-bold text-gray-900">
           Add a new product
         </h2>

@@ -6,9 +6,7 @@ function SideNav() {
   return (
     <div className="flex flex-col md:flex-row  mx-auto h-full mt-5">
       <nav className=" text-white w-full p-4">
-        <h2 className="text-lg bg-[#505D68] font-bold mb-8 p-2">
-          User Dashboard
-        </h2>
+        
         <ul className="mt-4">
           <li>
             <Link

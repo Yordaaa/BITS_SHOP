@@ -3,7 +3,7 @@ import avatar from "/avatar.png";
 function Profile() {
   return (
     <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
-      <div className="col-span-1 h-full">
+      <div className="col-span-1 h-full border-r-2">
         <SideNav />
       </div>
       <div className="px-4 mx-auto w-full max-w-xl col-span-3">

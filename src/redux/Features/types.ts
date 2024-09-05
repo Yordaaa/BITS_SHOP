@@ -4,14 +4,14 @@ export interface UserProps {
     profile?: {
         firstName?: string;
         lastName: string;
-        email?: string; 
+        email?: string;
         username?: string;
     };
 }
 
 export interface LoginUserInputProps {
-    password: string;
     schoolId: string;
+    password: string;
 }
 
 export interface RegistrationInputProps {

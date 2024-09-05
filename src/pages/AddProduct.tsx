@@ -1,4 +1,5 @@
 import { useState, ChangeEvent, DragEvent } from "react";
+import SideNav from "../components/SideNav";
 
 function AddProduct() {
   const [images, setImages] = useState<File[]>([]);
@@ -27,8 +28,11 @@ function AddProduct() {
   };
 
   return (
-    <section className="bg-white">
-      <div className="py-8 px-4 mx-auto max-w-2xl">
+    <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
+        <div className="col-span-1 h-full">
+            <SideNav />
+        </div>
+      <div className="py-8 px-4 mx-auto w-full max-w-2xl col-span-3">
         <h2 className="mb-4 text-xl font-bold text-gray-900">
           Add a new product
         </h2>

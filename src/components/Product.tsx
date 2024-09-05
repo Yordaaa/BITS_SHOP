@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface Product {
   id: number;
@@ -57,7 +58,9 @@ function Product() {
               className="w-full h-48 object-cover"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gray-700 bg-opacity-80 text-white hover:text-primary text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <button className="w-full py-2">Show Details</button>
+              <Link to="/productdetail" className="w-full py-2">
+                Show Details
+              </Link>
             </div>
           </div>
           <div className="p-4">

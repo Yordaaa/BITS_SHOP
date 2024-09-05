@@ -16,9 +16,9 @@ export default function Header() {
     <div className="fixed top-0 left-0 right-0 z-50 bg-gray-50">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 md:px-8">
         <div className="flex md:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link to="/" className="-m-1.5 p-1.5">
             <img alt="" src={logo} className="h-10 md:h-16 w-auto" />
-          </a>
+          </Link>
         </div>
         <div className="flex md:hidden">
           <button
@@ -65,46 +65,58 @@ export default function Header() {
         </PopoverGroup>
         <div className="hidden md:flex md:flex-1 md:justify-end">
           {localStorage.getItem("userInfo") ? (
-            <Menu as="div" className="relative inline-block text-left">
-              <div>
-                <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                  <label className="pr-3">welcome {userInfo?.firstName}</label>
-                </MenuButton>
-              </div>
-
-              <MenuItems
-                transition
-                className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
-              >
-                <div className="py-1">
-                  <MenuItem>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
-                    >
-                      Post product
-                    </a>
-                  </MenuItem>
-                  <MenuItem>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
-                    >
-                      History
-                    </a>
-                  </MenuItem>
-
-                  <MenuItem>
-                    <button
-                      type="submit"
-                      className="block w-full px-4 py-2 text-left text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
-                    >
-                      Sign out
-                    </button>
-                  </MenuItem>
+            <>
+              <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <MenuButton className="inline-flex w-full justify-center items-center rounded-3xl bg-white px-3 py-1  text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    <label className="pr-3">Hey {userInfo?.firstName}</label>
+                    <i className="fas fa-caret-down text-xl"></i>
+                  </MenuButton>
                 </div>
-              </MenuItems>
-            </Menu>
+
+                <MenuItems
+                  transition
+                  className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                >
+                  <div className="py-1">
+                    <MenuItem>
+                      <Link
+                        to="/addproduct"
+                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
+                      >
+                        Post product
+                      </Link>
+                    </MenuItem>
+                    <MenuItem>
+                      <Link
+                        to=""
+                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
+                      >
+                        History
+                      </Link>
+                    </MenuItem>
+
+                    <MenuItem>
+                      <button
+                        type="submit"
+                        className="block w-full px-4 py-2 text-left text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900"
+                      >
+                        Sign out
+                      </button>
+                    </MenuItem>
+                  </div>
+                </MenuItems>
+              </Menu>
+              <Link
+                to="/wishlist"
+                className="flex justify-center items-center  ml-3"
+              >
+                <i className="far fa-heart text-2xl relative"></i>
+                <p className="text-white bg-[#E3A57F] hover:bg-red-600 absolute text-[12px] rounded-full w-4 h-4 text-center ml-5 mb-5">
+                  4
+                </p>
+              </Link>
+            </>
           ) : (
             <Link
               to="login"

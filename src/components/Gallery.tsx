@@ -23,9 +23,9 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
   };
 
   return (
-    <div className="py-8 px-4 mx-auto max-w-screen-sm text-center lg:py-5">
+    <div className="px-4 mx-auto max-w-screen-sm text-center">
       <div id="indicators-carousel" className="relative w-full mx-auto">
-        <div className="relative h-56 overflow-hidden rounded-lg md:h-96 flex items-center justify-center">
+        <div className="relative h-72 overflow-hidden rounded-lg  flex items-center justify-center">
           {images.map((img, index) => (
             <div
               key={index}
@@ -36,7 +36,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
             >
               <img
                 src={img.secure_url}
-                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
                 alt={`Image ${index + 1}`}
               />
             </div>
@@ -67,8 +67,8 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
             key={index}
             src={img.secure_url}
             onClick={() => setActiveIndex(index)}
-            className={`w-[17%] h-[80px] rounded-lg cursor-pointer transform transition duration-300 hover:scale-110 ${
-              activeIndex === index ? "w-[30%] h-[130px]" : "mt-9"
+            className={`w-[15%] h-[70px] object-cover rounded-lg cursor-pointer transform transition duration-300 hover:scale-110 ${
+              activeIndex === index ? "w-[31%] h-[130px]" : ""
             }`}
             alt={`Thumbnail ${index + 1}`}
           />

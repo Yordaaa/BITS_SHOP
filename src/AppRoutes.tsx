@@ -7,6 +7,7 @@ import Signup from "./pages/authPages/SignUp";
 import AddProduct from "./pages/AddProduct";
 import Contact from "./pages/Contact";
 import { ProductDetail } from "./pages/ProductDetail";
+import Profile from "./pages/authPages/Profile";
 
 function AppRoutes() {
   return (
@@ -18,8 +19,9 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/addproduct" element={<AddProduct />} />
-
       <Route path="/productdetail" element={<ProductDetail />} />
+
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }

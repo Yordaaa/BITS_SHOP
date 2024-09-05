@@ -8,6 +8,8 @@ function Signup() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [schoolId, setSchoolId] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [registration, { isLoading }] = useRegistrationMutation();
@@ -27,6 +29,8 @@ function Signup() {
         firstName,
         lastName,
         schoolId,
+        phoneNumber,
+        username,
       }).unwrap();
 
       console.log(res);
@@ -108,6 +112,33 @@ function Signup() {
               />
               <div className="absolute inset-y-0 left-0 flex items-center ps-2">
                 <i className="fas fa-envelope"></i>
+              </div>
+            </div>
+            <div className="relative">
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary"
+                placeholder="Username"
+                required
+              />
+              <div className="absolute inset-y-0 left-0 flex items-center ps-2">
+                <i className="fas fa-user"></i>
+              </div>
+            </div>
+
+            <div className="relative">
+              <input
+                type="number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary"
+                placeholder="Phone Number"
+                required
+              />
+              <div className="absolute inset-y-0 left-0 flex items-center ps-2">
+                <i className="fas fa-phone"></i>
               </div>
             </div>
 

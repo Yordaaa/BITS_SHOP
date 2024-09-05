@@ -1,14 +1,14 @@
 export interface UserProps {
     schoolId: string;
     password: string;
-    profile?: {
-        firstName?: string;
-        lastName: string;
-        email?: string;
-        username?: string;
-    };
-}
+    firstName?: string;
+    lastName: string;
+    email?: string;
+    username?: string;
+    phoneNumber?: string;
+    
 
+}
 export interface LoginUserInputProps {
     schoolId: string;
     password: string;
@@ -20,9 +20,10 @@ export interface RegistrationInputProps {
     lastName: string;
     email?: string;
     schoolId?: string;
-    username?: string;
     password?: string;
     confirmPassword?: string;
+    username?: string;
+    phoneNumber?: string;
 }
 
 export interface RegistrationResponseProps {

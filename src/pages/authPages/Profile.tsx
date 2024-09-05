@@ -1,5 +1,5 @@
 import SideNav from "../../components/SideNav";
-import avatar from '/avatar.png'
+import avatar from "/avatar.png";
 function Profile() {
   return (
     <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
@@ -43,7 +43,6 @@ function Profile() {
                 name="username"
                 id="username"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
-    
               />
             </div>
             <div>
@@ -58,7 +57,6 @@ function Profile() {
                 name="schoolId"
                 id="schoolId"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
-                
               />
             </div>
 
@@ -74,7 +72,6 @@ function Profile() {
                 name="firstName"
                 id="firstName"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
-      
               />
             </div>
             <div>
@@ -89,7 +86,6 @@ function Profile() {
                 name="lastName"
                 id="lastName"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
-          
               />
             </div>
 
@@ -105,7 +101,6 @@ function Profile() {
                 name="email"
                 id="email"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
-                
               />
             </div>
 
@@ -121,10 +116,8 @@ function Profile() {
                 name="phoneNumber"
                 id="phoneNumber"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
-
               />
             </div>
-
             <button
               type="submit"
               className="w-full text-white bg-primary hover:bg-opacity-90 font-medium rounded-3xl px-5 py-2 text-center"

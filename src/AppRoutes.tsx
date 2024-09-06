@@ -24,7 +24,7 @@ function AppRoutes() {
             <Route element={<ProtectedRoute />}>
                 <Route path="/addproduct" element={<AddProduct />} />
             </Route>
-            <Route path="/productdetail" element={<ProductDetail />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/bidrequest" element={<BidRequest />} />
             <Route path="/bids" element={<Bids />} />

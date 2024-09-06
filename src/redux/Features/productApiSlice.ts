@@ -1,11 +1,11 @@
 import { apiSlice } from './apiSlice';
-import { paramsProps, ProductCardProps } from './types';
+import { paramsProps, ProductCardProps, productResTypeProps } from './types';
 
 export const productApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         postProduct: builder.mutation({
             query: ({ images, formData }) => {
-                var bodyFormData = new FormData();
+                const bodyFormData = new FormData();
 
                 images.forEach((image: File) => {
                     bodyFormData.append('file', image);
@@ -31,8 +31,17 @@ export const productApiSlice = apiSlice.injectEndpoints({
                     }
                 };
             }
+        }),
+        getProduct: builder.query<productResTypeProps, string | undefined>({
+            query: (id) => {
+
+                console.log(id);
+                return {
+                    url: `/product/get-product/${id}`
+                };
+            }
         })
     })
 });
 
-export const { usePostProductMutation, useGetAllProductsQuery } = productApiSlice;
+export const { usePostProductMutation, useGetAllProductsQuery, useGetProductQuery } = productApiSlice;

@@ -1,45 +1,6 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { productResTypeProps } from '../redux/Features/types';
-
-// interface Product {
-//     id: number;
-//     name: string;
-//     description: string;
-//     price: string;
-//     image: string;
-// }
-
-// const products: Product[] = [
-//     {
-//         id: 1,
-//         name: 'Product 1',
-//         description: 'This is a description for Product 1.',
-//         price: '$29.99',
-//         image: 'https://m.media-amazon.com/images/I/715O2s4SzyL._AC_US218_.jpg'
-//     },
-//     {
-//         id: 2,
-//         name: 'Product 2',
-//         description: 'This is a description for Product 2.',
-//         price: '$39.99',
-//         image: 'https://crdms.images.consumerreports.org/f_auto,w_600/prod/products/cr/models/402431-smartphones-apple-iphone-12-10016496.png'
-//     },
-//     {
-//         id: 3,
-//         name: 'Product 3',
-//         description: 'This is a description for Product 3.',
-//         price: '$49.99',
-//         image: 'https://www.shutterstock.com/image-photo/wireless-earphones-earpods-isolated-on-260nw-2030446370.jpg'
-//     },
-//     {
-//         id: 4,
-//         name: 'Product 4',
-//         description: 'This is a description for Product 4.',
-//         price: '$59.99',
-//         image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGxhcHRvcHxlbnwwfHwwfHx8MA%3D%3D'
-//     }
-// ];
 
 interface ProductProps {
     products: productResTypeProps[] | undefined;
@@ -54,7 +15,7 @@ function Product({ products }: ProductProps) {
                     <div className="relative">
                         <img src={product.images?.[0].secure_url} alt={product.name} className="w-full h-48 object-cover" />
                         <div className="absolute bottom-0 left-0 right-0 bg-gray-700 bg-opacity-80 text-white hover:text-primary text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <Link to="/productdetail" className="w-full py-2">
+                            <Link to={`/product/${product._id}`}className="w-full py-2">
                                 Show Details
                             </Link>
                         </div>

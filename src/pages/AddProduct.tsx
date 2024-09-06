@@ -29,10 +29,10 @@ function AddProduct() {
 
   return (
     <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
-        <div className="col-span-1 h-full border-r-2 ">
-            <SideNav />
-        </div>
-      <div className="py-8 px-4 mx-auto w-full max-w-2xl col-span-3 ">
+      <div className="col-span-1 h-full border-r-2 ">
+        <SideNav />
+      </div>
+      <div className="py-8 px-4 mx-auto w-full max-w-2xl col-span-4 md:col-span-3 ">
         <h2 className="mb-4 text-xl font-bold text-gray-900">
           Add a new product
         </h2>
@@ -65,9 +65,7 @@ function AddProduct() {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                 required
               >
-                <option value="" >
-                  Select category
-                </option>
+                <option value="">Select category</option>
                 <option value="PC">PC</option>
                 <option value="GA">Tablets</option>
                 <option value="PH">Phones</option>

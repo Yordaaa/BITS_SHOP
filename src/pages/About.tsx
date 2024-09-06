@@ -3,13 +3,13 @@ function About() {
   return (
     <>
       <div
-        className="grid max-w-screen-2xl grid-cols-3 justify-center px-4 py-8 mx-auto bg-cover bg-center"
+        className="grid max-w-screen-2xl md:grid-cols-3 justify-center px-4 py-8 mx-auto bg-cover bg-center"
         style={{
           backgroundImage:
             "url('https://www.knoxalliance.store/wp-content/uploads/2017/05/light-color-background-images-for-website-top-hd-images-for-free-background-for-website-in-light-color-1-1024x640.jpg')",
         }}
       >
-        <div className="mr-auto place-self-center col-span-2 px-20 ml-16">
+        <div className="mr-auto place-self-center md:col-span-2 md:px-20 md:ml-16">
           <h1 className="max-w-2xl mb-4 text-4xl font-bold tracking-tight leading-none text-center ">
             <span className="text-primary font-bold">Who</span> We Are
           </h1>
@@ -21,7 +21,7 @@ function About() {
             the needs of our student community.
           </p>
         </div>
-        <div className="">
+        <div className="w-full flex justify-center mx-auto">
           <img src={about} alt="About Us" className="h-96" />
         </div>
       </div>

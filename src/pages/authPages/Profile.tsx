@@ -6,7 +6,7 @@ function Profile() {
       <div className="col-span-1 h-full border-r-2">
         <SideNav />
       </div>
-      <div className="px-4 mx-auto w-full max-w-xl col-span-3">
+      <div className="px-4 mx-auto w-full max-w-xl col-span-4 md:col-span-3">
         <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-700 md:text-2xl">
             Edit your profile

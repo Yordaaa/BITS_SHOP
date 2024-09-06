@@ -1,5 +1,6 @@
 import React from "react";
 import { Gallery } from "../components/Gallery";
+import { Link } from "react-router-dom";
 
 const dummyImages = [
   {
@@ -70,9 +71,12 @@ export const ProductDetail: React.FC = () => {
           <button className="mt-6 bg-primary text-white py-2 px-4 rounded-3xl hover:bg-opacity-80 transition">
             Buy now
           </button>
-          <button className="ml-4 mt-6 border-[#E3A57F] border text-[#E3A57F] hover:text-white hover:bg-[#E3A57F] hover py-2 px-4 rounded-3xl hover:bg-opacity-90 transition">
+          <Link
+            to="/bidrequest"
+            className="ml-4 mt-6 border-[#E3A57F] border text-[#E3A57F] hover:text-white hover:bg-[#E3A57F] hover py-2 px-4 rounded-3xl hover:bg-opacity-90 transition"
+          >
             Request bid
-          </button>
+          </Link>
         </div>
       </div>
     </div>

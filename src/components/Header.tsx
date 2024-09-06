@@ -19,7 +19,7 @@ export default function Header() {
 
     const handleLogout = async () => {
         await logoutApi();
-        dispatch(logout()); 
+        dispatch(logout());
         navigate('/login');
     };
     return (
@@ -66,13 +66,8 @@ export default function Header() {
                                 >
                                     <div className="py-1">
                                         <MenuItem>
-                                            <Link to="/addproduct" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900">
-                                                Post product
-                                            </Link>
-                                        </MenuItem>
-                                        <MenuItem>
-                                            <Link to="" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900">
-                                                History
+                                            <Link to="/profile" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:text-gray-900">
+                                                Dashboard
                                             </Link>
                                         </MenuItem>
 
@@ -98,6 +93,11 @@ export default function Header() {
                             Log in
                         </Link>
                     )}
+                </div>
+                <div className="flex md:hidden">
+                    <button type="button" onClick={() => setMobileMenuOpen(true)} className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                        <i className="text-2xl fas fa-bars"></i>
+                    </button>
                 </div>
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">

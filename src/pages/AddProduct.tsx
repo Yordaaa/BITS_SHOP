@@ -4,6 +4,7 @@ import { usePostProductMutation } from '../redux/Features/productApiSlice';
 import { RegistrationResponseProps } from '../redux/Features/types';
 import { ErrorResponse, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import SideNav from '../components/SideNav';
 
 function AddProduct() {
     const navigate = useNavigate();
@@ -71,62 +72,38 @@ function AddProduct() {
         <section className="bg-white">
             <div className="py-8 px-4 mx-auto max-w-2xl">
                 <h2 className="mb-4 text-xl font-bold text-gray-900">Add a new product</h2>
-                <form onSubmit={handleSubmit}>
+                <form>
                     <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                         <div className="col-span-2">
                             <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900">
                                 Product Name
                             </label>
-                            <input
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleFormDataChange}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                                placeholder="Enter product name"
-                                required
-                            />
+                            <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Enter product name" required />
                         </div>
                         <div>
                             <label htmlFor="category" className="block mb-2 text-sm font-medium text-gray-900">
                                 Category
                             </label>
-                            <select
-                                name="category"
-                                value={formData.category}
-                                onChange={handleFormDataChange}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                                required
-                            >
-                                {categories?.map((cate) => (
-                                    <option key={cate._id} value={cate.name}>
-                                        {cate.name}
-                                    </option>
-                                ))}
+                            <select id="category" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required>
+                                <option value="">Select category</option>
+                                <option value="PC">PC</option>
+                                <option value="GA">Tablets</option>
+                                <option value="PH">Phones</option>
                             </select>
                         </div>
                         <div className="w-full">
                             <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900">
                                 Price
                             </label>
-                            <input
-                                name="price"
-                                value={formData.price}
-                                onChange={handleFormDataChange}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
-                                placeholder="Enter price"
-                                required
-                            />
+                            <input type="number" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" placeholder="Enter price" required />
                         </div>
                         <div className="col-span-2">
                             <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900">
                                 Description
                             </label>
                             <textarea
-                                name="description"
+                                id="description"
                                 rows={4}
-                                value={formData.description}
-                                onChange={handleFormDataChange}
                                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300"
                                 placeholder="Your description here"
                                 required
@@ -168,8 +145,8 @@ function AddProduct() {
                             </div>
                         </div>
                     </div>
-                    <button type="submit" disabled={isLoading} className="px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary rounded-3xl hover:bg-opacity-80">
-                        {isLoading ? 'Adding...' : 'Add product'}
+                    <button type="submit" className="px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary rounded-3xl hover:bg-opacity-80">
+                        Add product
                     </button>
                 </form>
             </div>

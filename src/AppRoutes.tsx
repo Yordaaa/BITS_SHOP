@@ -4,10 +4,13 @@ import Market from './pages/Market';
 import About from './pages/About';
 import Login from './pages/authPages/Login';
 import Signup from './pages/authPages/SignUp';
-import AddProduct from './pages/AddProduct';
 import Contact from './pages/Contact';
 import { ProductDetail } from './pages/ProductDetail';
-import ProtectedRoute from './components/protectedRoute';
+import Profile from './pages/authPages/Profile';
+import BidRequest from './pages/BidRequest';
+import Bids from './pages/Bids';
+import ProtectedRoute from './components/ProtectedRoute';
+import AddProduct from './pages/AddProduct';
 
 function AppRoutes() {
     return (
@@ -21,8 +24,10 @@ function AppRoutes() {
             <Route element={<ProtectedRoute />}>
                 <Route path="/addproduct" element={<AddProduct />} />
             </Route>
-
             <Route path="/productdetail" element={<ProductDetail />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/bidrequest" element={<BidRequest />} />
+            <Route path="/bids" element={<Bids />} />
         </Routes>
     );
 }

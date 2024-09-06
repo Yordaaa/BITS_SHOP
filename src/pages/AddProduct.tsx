@@ -1,38 +1,79 @@
-import { useState, ChangeEvent, DragEvent } from "react";
-import SideNav from "../components/SideNav";
+import { useState, ChangeEvent, DragEvent, FormEvent } from 'react';
+import { useGetAllCategoriesQuery } from '../redux/Features/categoryApiSlice';
+import { usePostProductMutation } from '../redux/Features/productApiSlice';
+import { RegistrationResponseProps } from '../redux/Features/types';
+import { ErrorResponse, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import SideNav from '../components/SideNav';
 
 function AddProduct() {
-  const [images, setImages] = useState<File[]>([]);
+    const navigate = useNavigate();
+    const [images, setImages] = useState<File[]>([]);
 
-  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const fileList = event.target.files;
-    if (fileList) {
-      const fileArray = Array.from(fileList);
-      setImages((prevImages) => [...prevImages, ...fileArray]);
-    }
-  };
+    const [formData, setFormData] = useState({
+        name: '',
+        description: '',
+        price: 0,
+        category: ''
+    });
 
-  const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-  };
+    const handleFormDataChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+    const { data: categories } = useGetAllCategoriesQuery();
+    const [postProduct, { isLoading }] = usePostProductMutation();
 
-  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const fileList = event.dataTransfer.files;
-    const fileArray = Array.from(fileList);
-    setImages((prevImages) => [...prevImages, ...fileArray]);
-  };
+    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const fileList = event.target.files;
+        if (fileList) {
+            const fileArray = Array.from(fileList);
+            setImages((prevImages) => [...prevImages, ...fileArray]);
+        }
+    };
 
-  const handleRemoveImage = (index: number) => {
-    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-  };
+    const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+    };
+
+    const handleDrop = (event: DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        const fileList = event.dataTransfer.files;
+        const fileArray = Array.from(fileList);
+        setImages((prevImages) => [...prevImages, ...fileArray]);
+    };
+
+    const handleRemoveImage = (index: number) => {
+        setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+    };
+
+    const handleSubmit = async (e: FormEvent) => {
+        e.preventDefault();
+        try {
+            const res = await postProduct({
+                formData,
+                images
+            });
+
+            if ('data' in res) {
+                const { data } = res as { data: RegistrationResponseProps };
+                toast.success(data.message);
+                navigate('/');
+            } else {
+                const { error } = res as { error: ErrorResponse };
+                toast.error(error.data.message);
+            }
+        } catch (error) {
+            toast.error('An unexpected error occurred');
+        }
+    };
 
   return (
     <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
-      <div className="col-span-1 h-full border-r-2 ">
-        <SideNav />
-      </div>
-      <div className="py-8 px-4 mx-auto w-full max-w-2xl col-span-4 md:col-span-3 ">
+        <div className="col-span-1 h-full border-r-2 ">
+            <SideNav />
+        </div>
+      <div className="py-8 px-4 mx-auto w-full max-w-2xl col-span-3 ">
         <h2 className="mb-4 text-xl font-bold text-gray-900">
           Add a new product
         </h2>
@@ -65,7 +106,9 @@ function AddProduct() {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
                 required
               >
-                <option value="">Select category</option>
+                <option value="" >
+                  Select category
+                </option>
                 <option value="PC">PC</option>
                 <option value="GA">Tablets</option>
                 <option value="PH">Phones</option>

@@ -20,15 +20,7 @@ export default function Header() {
             <img alt="" src={logo} className="h-10 md:h-16 w-auto" />
           </Link>
         </div>
-        <div className="flex md:hidden">
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-          >
-            <i className="text-2xl fas fa-bars"></i>
-          </button>
-        </div>
+
         <PopoverGroup className="hidden md:flex md:gap-x-8 lg:gap-x-12 text-lg">
           <Link
             to="/"
@@ -63,7 +55,8 @@ export default function Header() {
             Contact
           </Link>
         </PopoverGroup>
-        <div className="hidden md:flex md:flex-1 md:justify-end">
+        
+        <div className="flex flex-1 justify-end pr-6">
           {localStorage.getItem("userInfo") ? (
             <>
               <Menu as="div" className="relative inline-block text-left">
@@ -117,6 +110,15 @@ export default function Header() {
               Log in
             </Link>
           )}
+        </div>
+        <div className="flex md:hidden">
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(true)}
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          >
+            <i className="text-2xl fas fa-bars"></i>
+          </button>
         </div>
       </nav>
       <Dialog

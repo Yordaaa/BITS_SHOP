@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import { ProductDetail } from "./pages/ProductDetail";
 import Profile from "./pages/authPages/Profile";
 import BidRequest from "./pages/BidRequest";
+import Bids from "./pages/Bids";
 
 function AppRoutes() {
   return (
@@ -21,9 +22,9 @@ function AppRoutes() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/addproduct" element={<AddProduct />} />
       <Route path="/productdetail" element={<ProductDetail />} />
-
       <Route path="/profile" element={<Profile />} />
       <Route path="/bidrequest" element={<BidRequest />} />
+      <Route path="/bids" element={<Bids />} />
     </Routes>
   );
 }

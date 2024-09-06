@@ -6,8 +6,6 @@ export interface UserProps {
     email?: string;
     username?: string;
     phoneNumber?: string;
-    
-
 }
 export interface LoginUserInputProps {
     schoolId: string;
@@ -15,7 +13,6 @@ export interface LoginUserInputProps {
 }
 
 export interface RegistrationInputProps {
-
     firstName?: string;
     lastName: string;
     email?: string;
@@ -27,8 +24,7 @@ export interface RegistrationInputProps {
 }
 
 export interface RegistrationResponseProps {
-    success: boolean;
-    message?: string;
+    message: string;
 }
 
 export interface authStateProps {
@@ -36,6 +32,44 @@ export interface authStateProps {
 }
 
 export interface resTypeProps {
-    success: true;
     userInfo: UserProps;
+}
+
+export interface categoryResTypeProps {
+    _id: string;
+    name: string;
+    description: string;
+    image: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface productResTypeProps {
+    _id: string;
+    name: string;
+    description: string;
+    images: [
+        {
+            public_id: string;
+            secure_url: string;
+        }
+    ];
+    seller: string;
+    price: number;
+    isApproved: boolean;
+    category: string;
+    status: 'available' | 'sold' | 'lent' | 'pending';
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface paramsProps {
+    keyword: string;
+    page: number;
+}
+
+export interface ProductCardProps {
+    products: productResTypeProps[];
+    filteredProductCount: number;
+    resPerPage: number;
 }

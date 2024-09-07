@@ -13,7 +13,7 @@ function Product({ products }: ProductProps) {
             {products?.map((product) => (
                 <div key={product._id} className="group relative bg-white border rounded-lg shadow-md overflow-hidden">
                     <div className="relative">
-                        <img src={product.images?.[0].secure_url} alt={product.name} className="w-full h-48 object-cover" />
+                        <img src={product.images?.[0].secure_url} alt={product.name} className="w-full h-48 object-contain" />
                         <div className="absolute bottom-0 left-0 right-0 bg-gray-700 bg-opacity-80 text-white hover:text-primary text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <Link to={`/product/${product._id}`}className="w-full py-2">
                                 Show Details

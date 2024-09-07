@@ -11,6 +11,7 @@ import BidRequest from './pages/BidRequest';
 import Bids from './pages/Bids';
 import ProtectedRoute from './components/ProtectedRoute';
 import AddProduct from './pages/AddProduct';
+import { Checkout } from './pages/Checkout';
 
 function AppRoutes() {
     return (
@@ -28,6 +29,7 @@ function AppRoutes() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/bidrequest" element={<BidRequest />} />
             <Route path="/bids" element={<Bids />} />
+            <Route path="/checkout/:id" element={<Checkout />} />
         </Routes>
     );
 }

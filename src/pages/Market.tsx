@@ -7,6 +7,7 @@ import { paramsProps } from '../redux/Features/types';
 import { Pagination } from 'flowbite-react';
 import { useGetAllCategoriesQuery } from '../redux/Features/categoryApiSlice';
 import { getPriceValue } from '../helpers/getPriceValue';
+import ProductSkeleton from '../components/ProductSkeleton';
 
 const sortOptions = [
     { name: 'Date: Old to New', value: '-createdAt', current: false },
@@ -84,9 +85,6 @@ export default function ElectronicsFilter() {
 
     return (
         <>
-            {isLoading ? (
-                <p>Loading...</p>
-            ) : (
                 <div className="bg-white">
                     {/* Mobile filter dialog */}
                     <Dialog open={isMobileFiltersOpen} onClose={() => setMobileFiltersOpen(false)} className="relative z-40 lg:hidden">
@@ -257,23 +255,30 @@ export default function ElectronicsFilter() {
                                         </p>
                                     </div>
                                 </div>
-
-                                {/* Product grid */}
                                 <div className="lg:col-span-3">
-                                    <Product products={products?.products} />
-                                </div>
-                                <div>
-                                    {products?.resPerPage! > 8 && (
-                                        <div className="flex justify-center">
-                                            <Pagination currentPage={currentPage} totalPages={Math.ceil(products?.filteredProductCount! / products?.resPerPage!)} onPageChange={onPageChange} />
+                                {isLoading ? (
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 max-w-screen-xl mx-auto">
+                                            {[...Array(8)].map((_, index) => (
+                                                <ProductSkeleton key={index} />
+                                            ))}
                                         </div>
+                                    ) : (
+                                        <>
+                                            <Product products={products?.products} />
+                                            {products?.resPerPage! > 8 && (
+                                                <div className="flex justify-center">
+                                                    <Pagination currentPage={currentPage} totalPages={Math.ceil(products?.filteredProductCount! / products?.resPerPage!)} onPageChange={onPageChange} />
+                                                </div>
+                                            )}
+                                        </>
                                     )}
-                                </div>
+                                    </div>
+
                             </div>
                         </section>
                     </main>
                 </div>
-            )}
+            
         </>
     );
 }

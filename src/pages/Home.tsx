@@ -7,6 +7,7 @@ import { useGetAllProductsQuery } from '../redux/Features/productApiSlice';
 
 function Home() {
     const [currentPage, setCurrentPage] = useState(1);
+    const [searchKeyword, setSearchKeyword] = useState('');
 
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
@@ -17,14 +18,19 @@ function Home() {
         navigate('/market?' + searchParams);
     };
 
+    const searchHandler = () => {
+        searchParams.set('page', '1');
+        setCurrentPage(1);
+        setSearchKeyword(searchParams.toString());
+        searchParams.set('keyword', searchKeyword);
+        navigate('/market?' + searchParams);
+    };
+
     const page = Number(searchParams.get('page')) || 1;
     const keyword = searchParams.get('keyword') || '';
     const params: paramsProps = { keyword, page };
 
     const { data: products, isLoading } = useGetAllProductsQuery(params);
-
-    console.log(products);
-    console.log(products?.products);
 
     return (
         <>
@@ -49,11 +55,17 @@ function Home() {
                                     </div>
                                     <input
                                         type="search"
-                                        id="default-search"
+                                        name="default-search"
+                                        value={searchKeyword}
+                                        onChange={(e) => setSearchKeyword(e.target.value)}
                                         className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50  "
                                         placeholder="Enter keyword"
                                     />
-                                    <button type="submit" className="text-white absolute end-2.5 bottom-2 bg-primary hover:opacity-90 font-medium rounded-3xl text-sm px-4 py-1 ">
+                                    <button
+                                        type="submit"
+                                        onClick={searchHandler}
+                                        className="text-white absolute end-2.5 bottom-2 bg-primary hover:opacity-90 font-medium rounded-3xl text-sm px-4 py-1 "
+                                    >
                                         Search
                                     </button>
                                 </div>
@@ -63,9 +75,11 @@ function Home() {
                     <div className=" py-10">
                         <h1 className="text-3xl font-bold text-gray-800 max-w-screen-xl mx-auto">Latest Posts</h1>
                         <Product products={products?.products} />
-                        <div className="flex justify-center">
-                            <Pagination currentPage={currentPage} totalPages={Math.ceil(products?.filteredProductCount! / products?.resPerPage!)} onPageChange={onPageChange} />
-                        </div>
+                        {products?.resPerPage! > 8 && (
+                            <div className="flex justify-center">
+                                <Pagination currentPage={currentPage} totalPages={Math.ceil(products?.filteredProductCount! / products?.resPerPage!)} onPageChange={onPageChange} />
+                            </div>
+                        )}
                     </div>
                     <div className="bg-white text-center">
                         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">

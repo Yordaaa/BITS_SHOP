@@ -7,6 +7,7 @@ import { selectUser } from '../redux/Features/selector';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { useLogoutApiMutation } from '../redux/Features/authApiSlice';
 import { logout } from '../redux/Features/authSlice';
+import { useGetWishlistQuery } from '../redux/Features/useApiSlice';
 export default function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const location = useLocation();
@@ -14,7 +15,7 @@ export default function Header() {
     const navigate = useNavigate();
     const isActive = (path: string) => location.pathname === path;
     const userInfo = useSelector(selectUser);
-
+    const { data } = useGetWishlistQuery();
     const [logoutApi] = useLogoutApiMutation();
 
     const handleLogout = async () => {
@@ -50,12 +51,12 @@ export default function Header() {
                     </Link>
                 </PopoverGroup>
                 <div className="hidden md:flex md:flex-1 md:justify-end">
-                    {localStorage.getItem('userInfo') ? (
+                    {userInfo ? (
                         <>
                             <Menu as="div" className="relative inline-block text-left">
                                 <div>
                                     <MenuButton className="inline-flex w-full justify-center items-center rounded-3xl bg-white px-3 py-1  text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                                        <label className="pr-3">Hey {userInfo?.firstName}</label>
+                                        <label className="pr-3">Hey {userInfo?.username}</label>
                                         <i className="fas fa-caret-down text-xl"></i>
                                     </MenuButton>
                                 </div>
@@ -85,9 +86,8 @@ export default function Header() {
                             </Menu>
                             <Link to="/wishlist" className="flex justify-center items-center  ml-3">
                                 <i className="far fa-heart text-2xl relative"></i>
-                                <p className="text-white bg-[#E3A57F] hover:bg-red-600 absolute text-[12px] rounded-full w-4 h-4 text-center ml-5 mb-5">4</p>
+                                <p className="text-white bg-[#E3A57F] hover:bg-red-600 absolute text-[12px] rounded-full w-4 h-4 text-center ml-5 mb-5">{data?.wishlist.length}</p>
                             </Link>
-              
                         </>
                     ) : (
                         <Link to="login" className="text-sm font-semibold leading-6 text-primary border-primary p-2 px-5 rounded-3xl border-2 hover:text-white hover:bg-primary">

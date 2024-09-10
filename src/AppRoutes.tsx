@@ -11,10 +11,11 @@ import BidRequest from './pages/BidRequest';
 import Bids from './pages/Bids';
 import ProtectedRoute from './components/ProtectedRoute';
 import AddProduct from './pages/AddProduct';
-import Checkout from './pages/Checkout';
+import { Checkout } from './pages/Checkout';
 import AuthRoute from './components/AuthRoute';
 import Wishlist from './pages/wishlist';
 import ManageProducts from './pages/ManageProducts';
+import NotFoundPage from './pages/NotFoundPage';
 
 function AppRoutes() {
     return (
@@ -41,6 +42,7 @@ function AppRoutes() {
             <Route path="/bids" element={<Bids />} />
             <Route path="/checkout/:id" element={<Checkout />} />
             <Route path="/manage" element={<ManageProducts />} />
+            <Route path="*" element={<NotFoundPage />} />
         </Routes>
     );
 }

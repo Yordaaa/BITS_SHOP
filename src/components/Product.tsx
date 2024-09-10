@@ -58,7 +58,6 @@ function Product({ products }: ProductProps) {
     };
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 max-w-screen-xl mx-auto">
-<<<<<<< HEAD
             {products?.map((product) => {
                 const isInWishlist = data?.wishlist.some((item) => item._id === product._id);
                 return (
@@ -88,16 +87,6 @@ function Product({ products }: ProductProps) {
                                     ></button>
                                 )}
                             </div>
-=======
-            {products?.map((product) => (
-                <div key={product._id} className="group relative bg-white border rounded-lg shadow-md overflow-hidden">
-                    <div className="relative">
-                        <img src={product.images?.[0].secure_url} alt={product.name} className="w-full h-48 object-contain" />
-                        <div className="absolute bottom-0 left-0 right-0 bg-gray-700 bg-opacity-80 text-white hover:text-primary text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <Link to={`/product/${product._id}`}className="w-full py-2">
-                                Show Details
-                            </Link>
->>>>>>> 0bbe982c94fa624341f9702aee583c8497e5fddb
                         </div>
                     </div>
                 );

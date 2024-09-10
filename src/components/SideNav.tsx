@@ -1,10 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
-
 function SideNav() {
     const location = useLocation();
 
     return (
-        <div className="flex flex-col md:flex-row mx-auto h-full mt-5">
+        <div className="flex flex-col md:flex-row mx-auto  mt-5 h-screen">
             <nav className="text-white w-full p-4">
                 <ul className="mt-4">
                     <li>
@@ -21,10 +20,10 @@ function SideNav() {
                     </li>
                     <li>
                         <Link
-                            to="/bids"
-                            className={` py-2 pl-5 rounded-3xl flex items-center justify-between ${location.pathname === '/bids' ? 'bg-gray-50 text-black' : 'bg-[#505D68] my-1 text-white'}`}
+                            to="/manage"
+                            className={` py-2 pl-5 rounded-3xl flex items-center justify-between ${location.pathname === '/manage' ? 'bg-gray-50 text-black' : 'bg-[#505D68] my-1 text-white'}`}
                         >
-                            <span className="hidden md:inline">Bids</span>
+                            <span className="hidden md:inline">ManageProducts</span>
                             <div className="relative">
                                 <i className="fas fa-gavel md:hidden"></i>
                                 <h1 className="bg-[#E3A57F] hidden  rounded-full w-5 h-5 md:flex items-center justify-center text-black absolute -top-2 right-2">1</h1>

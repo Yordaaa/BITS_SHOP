@@ -7,6 +7,9 @@ const baseQuery = fetchBaseQuery({
 
 export const apiSlice = createApi({
     reducerPath: 'api',
+    refetchOnMountOrArgChange: true,
+    keepUnusedDataFor: 5,
+    tagTypes: ['userInfo'],
     baseQuery,
     endpoints: () => ({})
 });

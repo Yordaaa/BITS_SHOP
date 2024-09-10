@@ -11,9 +11,9 @@ import BidRequest from './pages/BidRequest';
 import Bids from './pages/Bids';
 import ProtectedRoute from './components/ProtectedRoute';
 import AddProduct from './pages/AddProduct';
-import Wishlist from './pages/wishlist';
+import Checkout from './pages/Checkout';
 import AuthRoute from './components/AuthRoute';
-import Checkout from './pages/checkout';
+import Wishlist from './pages/wishlist';
 
 function AppRoutes() {
     return (
@@ -35,6 +35,10 @@ function AppRoutes() {
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/checkout" element={<Checkout />} />
             </Route>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/bidrequest" element={<BidRequest />} />
+            <Route path="/bids" element={<Bids />} />
+            <Route path="/checkout/:id" element={<Checkout />} />
         </Routes>
     );
 }

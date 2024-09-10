@@ -1,6 +1,7 @@
 import SideNav from '../components/SideNav';
 
 function BidRequest() {
+<<<<<<< HEAD
     return (
         <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
             <div className="col-span-1 h-full border-r-2 ">
@@ -14,6 +15,25 @@ function BidRequest() {
                             <label className="block text-lg font-bold text-gray-700">
                                 <span className="text-sm text-gray-500">Product ID:</span> <strong className="text-gray-800">#363247</strong>
                             </label>
+=======
+   
+  return (
+    <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
+    <div className="md:col-span-1 h-full border-r-2 ">
+        <SideNav />
+    </div>
+  <div className="py-8 md:px-4 mx-auto w-full max-w-2xl col-span-4 ">
+    <div className="p-6 space-y-4 md:space-y-6 sm:p-8 max-w-xl mx-auto ">
+      <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-800 md:text-2xl">
+        Bid Request Details
+      </h1>
+      <div className="space-y-4 border-b-2 pb-5 bg-white shadow-md p-5 rounded-lg">
+        <div className="border-b pb-4 mb-4">
+          <label className="block text-lg font-bold text-gray-700">
+            <span className="text-sm text-gray-500">Product ID:</span>{" "}
+            <strong className="text-gray-800">#363247</strong>
+          </label>
+>>>>>>> 0bbe982c94fa624341f9702aee583c8497e5fddb
 
                             <label className="block font-semibold text-gray-700">
                                 <span className="text-sm text-gray-500">Bidder ID:</span> <strong className="text-gray-800">1234</strong>

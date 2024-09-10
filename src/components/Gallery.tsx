@@ -19,12 +19,12 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
     };
 
     return (
-        <div className="px-4 mx-auto max-w-screen-sm text-center">
+        <div className="px-4 mx-auto max-w-screen-sm text-center h-fit">
             <div id="indicators-carousel" className="relative w-full mx-auto">
                 <div className="relative h-72 overflow-hidden rounded-lg  flex items-center justify-center">
                     {images.map((img, index) => (
                         <div key={index} className={`duration-700 ease-in-out transition-opacity ${activeIndex === index ? 'opacity-100' : 'opacity-0'}`} data-carousel-item="active">
-                            <img src={img.secure_url} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover" alt={`Image ${index + 1}`} />
+                            <img src={img.secure_url} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-contain" alt={`Image ${index + 1}`} />
                         </div>
                     ))}
                 </div>
@@ -45,7 +45,7 @@ export const Gallery: React.FC<GalleryProps> = ({ images }) => {
                         key={index}
                         src={img.secure_url}
                         onClick={() => setActiveIndex(index)}
-                        className={`w-[15%] h-[70px] object-cover rounded-lg cursor-pointer transform transition duration-300 hover:scale-110 ${activeIndex === index ? 'w-[31%] h-[130px]' : ''}`}
+                        className={`w-[15%] h-[70px] object-contain rounded-lg cursor-pointer transform transition duration-300 hover:scale-110 ${activeIndex === index ? 'w-[31%] h-[130px]' : ''}`}
                         alt={`Thumbnail ${index + 1}`}
                     />
                 ))}

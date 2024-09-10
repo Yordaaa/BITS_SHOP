@@ -68,7 +68,7 @@ export const ProductDetail: React.FC = () => {
                 <div className="max-w-4xl mx-auto py-10 mb-0 md:mb-10">
                     <div className="flex flex-col justify-between md:flex-row items-center">
                         <div className="w-full md:w-1/2 mb-10 md:mb-0">{product && product.images && <Gallery images={product.images} />}</div>
-                        <div className="flex-1 md:pl-6 w-full  px-5">
+                        <div className="flex-1 md:pl-6 w-full px-5">
                             <div className="flex justify-between items-center">
                                 <div>
                                     <h1 className="text-2xl font-bold">{product?.name}</h1> ({product?.status})

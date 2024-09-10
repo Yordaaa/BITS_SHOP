@@ -5,10 +5,10 @@ function BidRequest() {
    
   return (
     <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
-    <div className="col-span-1 h-full border-r-2 ">
+    <div className="md:col-span-1 h-full border-r-2 ">
         <SideNav />
     </div>
-  <div className="py-8 px-4 mx-auto w-full max-w-2xl col-span-3 ">
+  <div className="py-8 md:px-4 mx-auto w-full max-w-2xl col-span-4 ">
     <div className="p-6 space-y-4 md:space-y-6 sm:p-8 max-w-xl mx-auto ">
       <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-800 md:text-2xl">
         Bid Request Details

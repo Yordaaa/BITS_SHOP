@@ -31,7 +31,7 @@ export default function Header() {
                         <img alt="" src={logo} className="h-10 md:h-16 w-auto" />
                     </Link>
                 </div>
-                
+
                 <PopoverGroup className="hidden md:flex md:gap-x-8 lg:gap-x-12 text-lg">
                     <Link to="/" className={`leading-6 ${isActive('/') ? 'text-primary' : 'text-gray-500'} hover:text-primary`}>
                         Home
@@ -46,13 +46,8 @@ export default function Header() {
                         Contact
                     </Link>
                 </PopoverGroup>
-<<<<<<< HEAD
-                <div className="hidden md:flex md:flex-1 md:justify-end">
-                    {userInfo ? (
-=======
                 <div className="flex flex-1 justify-end pr-5">
                     {localStorage.getItem('userInfo') ? (
->>>>>>> 0bbe982c94fa624341f9702aee583c8497e5fddb
                         <>
                             <Menu as="div" className="relative inline-block text-left">
                                 <div>

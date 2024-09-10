@@ -1,11 +1,21 @@
 export interface UserProps {
+    _id: string;
     schoolId: string;
-    password: string;
-    firstName?: string;
+    firstName: string;
     lastName: string;
-    email?: string;
-    username?: string;
-    phoneNumber?: string;
+    email: string;
+    username: string;
+    phoneNumber: string;
+    wishlist: string[];
+    profileImg: {
+        public_id: string;
+        secure_url: string;
+    };
+    bids: string[];
+    isAdmin: boolean;
+    purchasedProdcuts: productResTypeProps[];
+    createdAt: string;
+    updatedAt: string;
 }
 export interface LoginUserInputProps {
     schoolId: string;
@@ -66,10 +76,27 @@ export interface productResTypeProps {
 export interface paramsProps {
     keyword: string;
     page: number;
+    category?: string | null;
+    min?: string | null;
+    max?: string | null;
+    sortBy?: string | null;
 }
 
 export interface ProductCardProps {
     products: productResTypeProps[];
     filteredProductCount: number;
     resPerPage: number;
+}
+
+export interface wishlistResType {
+    wishlist: productResTypeProps[];
+}
+
+export interface updateProfileProps {
+    firstName: string;
+    lastName: string;
+    email: string;
+    username: string;
+    phoneNumber: string;
+    schoolId: string;
 }

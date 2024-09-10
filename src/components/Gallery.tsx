@@ -9,7 +9,7 @@ interface GalleryProps {
 
 export const Gallery: React.FC<GalleryProps> = ({ images }) => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
-    console.log(images);
+
     const nextSlide = () => {
         setActiveIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
     };

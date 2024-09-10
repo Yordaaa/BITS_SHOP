@@ -14,7 +14,7 @@ function AddProduct() {
         name: '',
         description: '',
         price: 0,
-        category: ''
+        category: 'Electronics'
     });
 
     const handleFormDataChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

@@ -22,24 +22,27 @@ export const productApiSlice = apiSlice.injectEndpoints({
         }),
         getAllProducts: builder.query<ProductCardProps, paramsProps>({
             query: (params) => {
-                console.log(params);
                 return {
                     url: '/product/get-all-products',
                     params: {
                         keyword: params.keyword,
-                        page: params.page
+                        page: params.page,
+                        category: params.category,
+                        sortBy: params.sortBy,
+                        'price[gte]': params.min,
+                        'price[lte]': params.max
                     }
                 };
-            }
+            },
+            providesTags: ['userInfo']
         }),
         getProduct: builder.query<productResTypeProps, string | undefined>({
             query: (id) => {
-
-                console.log(id);
                 return {
                     url: `/product/get-product/${id}`
                 };
-            }
+            },
+            providesTags: ['userInfo']
         })
     })
 });

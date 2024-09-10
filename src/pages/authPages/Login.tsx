@@ -29,7 +29,6 @@ function Login() {
                 toast.error(error.data.message);
             }
         } catch (error) {
-            console.log(error);
             toast.error('An unexpected error occurred');
         }
     };

@@ -92,15 +92,17 @@ export const ProductDetail: React.FC = () => {
                                 <p className="mt-4 text-gray-600">Posted by: Yordanos Tibebu</p>
                                 <p className="text-gray-600">0910133245</p>
                             </div>
-                            <Link to={'/checkout'} className="mt-6 bg-primary text-white py-2 px-4 rounded-3xl hover:bg-opacity-80 transition">
-                                Buy now
-                            </Link>
-                            <Link
-                                to={`/bidrequest/${product?._id}`}
-                                className="ml-4 mt-6 border-[#E3A57F] border text-[#E3A57F] hover:text-white hover:bg-[#E3A57F] hover py-2 px-4 rounded-3xl hover:bg-opacity-90 transition"
-                            >
-                                Request bid
-                            </Link>
+                            <div className="pt-5">
+                                <Link to={'/checkout'} className="mt-6 bg-primary text-white py-2 px-4 rounded-3xl hover:bg-opacity-80 transition">
+                                    Buy now
+                                </Link>
+                                <Link
+                                    to={`/bidrequest/${product?._id}`}
+                                    className="ml-4 mt-6 border-[#E3A57F] border text-[#E3A57F] hover:text-white hover:bg-[#E3A57F] hover py-2 px-4 rounded-3xl hover:bg-opacity-90 transition"
+                                >
+                                    Request bid
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

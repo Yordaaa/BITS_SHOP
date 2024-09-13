@@ -1,10 +1,26 @@
-import { Link } from 'react-router-dom';
+import { ErrorResponse, Link } from 'react-router-dom';
 import SideNav from '../components/SideNav';
-import { useGetUserProductQuery } from '../redux/Features/productApiSlice';
+import { useDeleteProductMutation, useGetUserProductQuery } from '../redux/Features/productApiSlice';
+import { toast } from 'react-toastify';
+import { RegistrationResponseProps } from '../redux/Features/types';
 
 const ManageProducts = () => {
     const { data: products } = useGetUserProductQuery();
-    console.log(products);
+    const [deleteProduct] = useDeleteProductMutation();
+    const handleDeleteProduct = async (_id: string) => {
+        try {
+            const res = await deleteProduct({ _id });
+            if ('data' in res) {
+                const { data } = res as { data: RegistrationResponseProps };
+                toast.success(data.message);
+            } else {
+                const { error } = res as { error: ErrorResponse };
+                toast.error(error.data.message);
+            }
+        } catch (error) {
+            toast.error('Unexpected error occurred');
+        }
+    };
     return (
         <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
             <div className="col-span-1 h-full border-r-2 ">
@@ -25,16 +41,16 @@ const ManageProducts = () => {
                         {products?.map((product) => {
                             return (
                                 <tbody>
-                                    <tr className="border-b bg-gray-100">
+                                    <tr className="border-b bg-gray-100 ">
                                         <td className="py-2 text-center">{product?._id}</td>
-                                        <td className="py-2 text-center truncate">{product?.price}</td>
+                                        <td className="py-2 text-center truncate">{product?.name}</td>
                                         <td className="py-2 text-center">{product?.status}</td>
                                         <td className="flex justify-center space-x-2 py-2">
                                             <Link to={`/update-product/${product._id}`} className=" text-[#E3A57F] text-xl flex items-center">
                                                 <i className="fas fa-edit mr-2"></i>
                                             </Link>
                                             <button className=" text-red-600 text-xl flex items-center">
-                                                <i className="fas fa-trash-alt mr-2"></i>
+                                                <i onClick={() => handleDeleteProduct(product._id)} className="fas fa-trash-alt mr-2"></i>
                                             </button>
                                             <Link to={`/bids/${product._id}`} className="bg-primary text-white font-medium py-1 px-3 rounded-3xl flex items-center">
                                                 <i className="fas fa-gavel mr-2"></i>

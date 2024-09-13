@@ -1,4 +1,4 @@
-import { ErrorResponse, useParams } from 'react-router-dom';
+import { ErrorResponse, useNavigate, useParams } from 'react-router-dom';
 import SideNav from '../components/SideNav';
 import { useDeleteImgMutation, useGetProductQuery, useUpdateProductMutation } from '../redux/Features/productApiSlice';
 import { ChangeEvent, DragEvent, FormEvent, useEffect, useState } from 'react';
@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 function UpdateProduct() {
     const { id } = useParams<{ id: string }>();
-
+    const navigate = useNavigate();
     const [images, setImages] = useState<File[]>([]);
 
     const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ function UpdateProduct() {
     const [updateProduct, { isLoading }] = useUpdateProductMutation();
     const [deleteImg] = useDeleteImgMutation();
     const { data: product } = useGetProductQuery(id);
-
+    console.log(product);
     useEffect(() => {
         if (product) {
             setFormData({
@@ -65,7 +65,6 @@ function UpdateProduct() {
     };
 
     const handleDeleteImage = async (_id: string, public_id: string) => {
-        console.log(_id, public_id);
         try {
             const res = await deleteImg({ _id, public_id });
             if ('data' in res) {
@@ -76,6 +75,7 @@ function UpdateProduct() {
                 toast.error(error.data.message);
             }
         } catch (error) {
+            console.log(error);
             toast.error('An unexpected error occurred');
         }
     };
@@ -99,7 +99,9 @@ function UpdateProduct() {
 
             if ('data' in res) {
                 const { data } = res as { data: RegistrationResponseProps };
+                setImages([]);
                 toast.success(data.message);
+                navigate(`/product/${product?._id}`);
             } else {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);

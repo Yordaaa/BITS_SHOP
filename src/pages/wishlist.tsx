@@ -58,7 +58,7 @@ function Wishlist() {
 
     if (!data?.wishlist || data.wishlist.length === 0) {
         return (
-            <div className="max-w-4xl mx-auto py-10 text-center h-[70vh]">
+            <div className="max-w-4xl mx-auto text-center pt-32 pb-60">
                 <h2 className="text-2xl font-bold text-gray-700">Your Wishlist is Empty</h2>
                 <p className="mt-4 text-gray-600">Looks like you haven't added anything to your wishlist yet.</p>
                 <button onClick={() => navigate('/market')} className="mt-6 bg-primary text-white py-2 px-4 rounded-3xl hover:bg-opacity-80 transition">
@@ -97,10 +97,8 @@ function Wishlist() {
                                 <p className="text-xl text-gray-700 mt-2 font-bold">{product?.price}</p>
                                 <p className="mt-4 text-gray-600">{product?.description}</p>
                                 <div>
-                                    <p className="mt-4 text-gray-600">
-                                        Posted by: {userInfo?.firstName} {userInfo?.lastName}
-                                    </p>
-                                    <p className="text-gray-600">{userInfo?.phoneNumber}</p>
+                                    <p className="mt-4 text-gray-600">Posted by: Yordanos Tibebu</p>
+                                    <p className="text-gray-600">0910133245</p>
                                 </div>
                                 <button className="mt-6 bg-primary text-white py-2 px-4 rounded-3xl hover:bg-opacity-80 transition">Buy now</button>
                                 <Link

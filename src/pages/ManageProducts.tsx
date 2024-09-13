@@ -12,8 +12,8 @@ const ManageProducts = () => {
             </div>
             <div className="py-8 px-4 mx-auto w-full max-w-4xl col-span-4 ">
                 <h1 className="text-2xl font-bold mb-6">Manage Products</h1>
-                <div className="bg-white shadow-lg rounded-lg">
-                    <table className="w-full table-auto">
+                <div className="bg-white shadow-lg rounded-lg overflow-x-auto">
+                    <table className="w-full table-auto ">
                         <thead className="">
                             <tr className=" bg-gray-200 text-gray-600 font-bold">
                                 <th className="py-3  rounded-tl-lg">Id</th>

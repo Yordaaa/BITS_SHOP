@@ -23,6 +23,7 @@ export default function Header() {
         dispatch(logout());
         navigate('/login');
     };
+
     return (
         <div className="fixed top-0 left-0 right-0 z-50 bg-gray-50">
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-3 md:px-8">
@@ -46,8 +47,9 @@ export default function Header() {
                         Contact
                     </Link>
                 </PopoverGroup>
-                <div className="flex flex-1 justify-end pr-5">
-                    {localStorage.getItem('userInfo') ? (
+
+                <div className="hidden md:flex flex-1 justify-end pr-5">
+                    {userInfo ? (
                         <>
                             <Menu as="div" className="relative inline-block text-left">
                                 <div>
@@ -80,10 +82,6 @@ export default function Header() {
                                     </div>
                                 </MenuItems>
                             </Menu>
-                            <Link to="/wishlist" className="flex justify-center items-center  ml-3">
-                                <i className="far fa-heart text-2xl relative"></i>
-                                <p className="text-white bg-[#E3A57F] hover:bg-red-600 absolute text-[12px] rounded-full w-4 h-4 text-center ml-5 mb-5">{data?.wishlist.length}</p>
-                            </Link>
                         </>
                     ) : (
                         <Link to="login" className="text-sm font-semibold leading-6 text-primary border-primary p-2 px-5 rounded-3xl border-2 hover:text-white hover:bg-primary">
@@ -91,19 +89,26 @@ export default function Header() {
                         </Link>
                     )}
                 </div>
-                <div className="flex md:hidden">
-                    <button type="button" onClick={() => setMobileMenuOpen(true)} className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-                        <i className="text-2xl fas fa-bars"></i>
-                    </button>
+
+                <div className="flex gap-5">
+                    <Link to="/wishlist" className="flex justify-center items-center  ml-3">
+                        <i className="far fa-heart text-2xl relative"></i>
+                        <p className="text-white bg-[#E3A57F] hover:bg-red-600 absolute text-[12px] rounded-full w-4 h-4 text-center ml-5 mb-5">{data?.wishlist.length}</p>
+                    </Link>
+                    <div className="flex md:hidden">
+                        <button type="button" onClick={() => setMobileMenuOpen(true)} className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                            {mobileMenuOpen ? <i className="fas fa-times text-2xl"></i> : <i className="fas fa-bars text-2xl"></i>}
+                        </button>
+                    </div>
                 </div>
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-10" />
-                <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                <DialogPanel className="fixed inset-y-0 right-0 z-10 w-[50%] overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
-                        <a href="#" className="-m-1.5 p-1.5">
-                            <img alt="" src={logo} className="h-8 w-auto" />
-                        </a>
+                        <Link to="/" className="-m-1.5 p-1.5">
+                            <img alt="Logo" src={logo} className="h-10 md:h-16 w-auto" />
+                        </Link>
                         <button type="button" onClick={() => setMobileMenuOpen(false)} className="-m-2.5 rounded-md p-2.5 text-gray-700">
                             <span className="h-6 w-6">✖</span>
                         </button>
@@ -120,6 +125,7 @@ export default function Header() {
                                 >
                                     Market
                                 </Link>
+
                                 <Link
                                     to="about"
                                     className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 ${isActive('/about') ? 'text-primary' : 'text-gray-700'} hover:bg-gray-50`}
@@ -132,11 +138,23 @@ export default function Header() {
                                 >
                                     Contact
                                 </Link>
-                            </div>
-                            <div className="py-6">
-                                <Link to="login" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                                    Log in
-                                </Link>
+                                {userInfo ? (
+                                    <>
+                                        <Link
+                                            to="/profile"
+                                            className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 ${isActive('/dashboard') ? 'text-primary' : 'text-gray-700'} hover:bg-gray-50`}
+                                        >
+                                            Dashboard
+                                        </Link>
+                                        <button type="submit" className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-700 hover:bg-gray-50`} onClick={handleLogout}>
+                                            Sign out
+                                        </button>
+                                    </>
+                                ) : (
+                                    <Link to="login" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                        Log in
+                                    </Link>
+                                )}
                             </div>
                         </div>
                     </div>

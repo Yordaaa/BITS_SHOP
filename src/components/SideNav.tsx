@@ -37,6 +37,12 @@ function SideNav() {
                         </Link>
                     </li>
                     <li>
+                        <Link to="/bid-history" className={`block py-2 pl-5 rounded-3xl ${location.pathname === '/bid-history' ? 'bg-gray-50 text-black border' : 'bg-[#505D68] my-1'}`}>
+                            <span className="hidden md:inline">Bid History</span>
+                            <i className="fas fa-user md:hidden"></i>
+                        </Link>
+                    </li>
+                    <li>
                         <Link
                             to="/messages"
                             className={`block py-2 pl-5 rounded-3xl items-center justify-between ${location.pathname === '/messages' ? 'bg-gray-50 text-black' : 'bg-[#505D68] my-1 text-white'}`}

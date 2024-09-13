@@ -11,7 +11,6 @@ export interface UserProps {
         public_id: string;
         secure_url: string;
     };
-    bids: string[];
     isAdmin: boolean;
     purchasedProdcuts: productResTypeProps[];
     createdAt: string;
@@ -99,4 +98,15 @@ export interface updateProfileProps {
     username: string;
     phoneNumber: string;
     schoolId: string;
+}
+
+export interface bidProps {
+    _id: string;
+    productId: string;
+    bidderId: string;
+    message: string;
+    amount: number;
+    status: 'pending' | 'accepted' | 'rejected';
+    createdAt: string;
+    updatedAt: string;
 }

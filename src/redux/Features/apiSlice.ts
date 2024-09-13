@@ -9,7 +9,7 @@ export const apiSlice = createApi({
     reducerPath: 'api',
     refetchOnMountOrArgChange: true,
     keepUnusedDataFor: 5,
-    tagTypes: ['userInfo'],
+    tagTypes: ['userInfo', 'product'],
     baseQuery,
     endpoints: () => ({})
 });

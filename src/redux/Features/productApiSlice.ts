@@ -18,7 +18,29 @@ export const productApiSlice = apiSlice.injectEndpoints({
                     method: 'POST',
                     body: bodyFormData
                 };
-            }
+            },
+            invalidatesTags: ['product']
+        }),
+        updateProduct: builder.mutation({
+            query: ({ bodyFormData }) => {
+                return {
+                    url: '/product/update-product',
+                    method: 'PUT',
+                    body: bodyFormData
+                };
+            },
+            invalidatesTags: ['product']
+        }),
+        deleteImg: builder.mutation({
+            query: (data) => {
+                console.log(data);
+                return {
+                    url: `/product/delete-product-img`,
+                    method: 'DELETE',
+                    body: data
+                };
+            },
+            invalidatesTags: ['product']
         }),
         getAllProducts: builder.query<ProductCardProps, paramsProps>({
             query: (params) => {
@@ -34,7 +56,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
                     }
                 };
             },
-            providesTags: ['userInfo']
+            providesTags: ['product']
         }),
         getProduct: builder.query<productResTypeProps, string | undefined>({
             query: (id) => {
@@ -42,9 +64,18 @@ export const productApiSlice = apiSlice.injectEndpoints({
                     url: `/product/get-product/${id}`
                 };
             },
-            providesTags: ['userInfo']
+            providesTags: ['product']
+        }),
+        getUserProduct: builder.query<productResTypeProps[], void>({
+            query: () => {
+                return {
+                    url: '/product/get-user-products',
+                    method: 'GET'
+                };
+            },
+            providesTags: ['product']
         })
     })
 });
 
-export const { usePostProductMutation, useGetAllProductsQuery, useGetProductQuery } = productApiSlice;
+export const { usePostProductMutation, useGetAllProductsQuery, useGetProductQuery, useGetUserProductQuery, useUpdateProductMutation, useDeleteImgMutation } = productApiSlice;

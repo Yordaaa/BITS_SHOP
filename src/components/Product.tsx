@@ -71,10 +71,10 @@ function Product({ products }: ProductProps) {
                             </div>
                         </div>
                         <div className="p-4">
-                            <h2 className="text-lg font-semibold">{product.name}</h2>
+                            <h2 className="text-lg font-semibold truncate">{product.name}</h2>
                             <p className="mt-2 text-gray-600 truncate">{product.description}</p>
                             <div className="flex justify-between items-center">
-                                <div className="mt-4 text-xl font-bold">{product.price}</div>
+                                <div className="mt-4 text-xl font-bold">{product.price} ETB</div>
                                 {isInWishlist ? (
                                     <button
                                         onClick={() => handleRemoveFromWishlsit(product._id)}

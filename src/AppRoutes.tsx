@@ -16,6 +16,9 @@ import AuthRoute from './components/AuthRoute';
 import Wishlist from './pages/wishlist';
 import ManageProducts from './pages/ManageProducts';
 import NotFoundPage from './pages/NotFoundPage';
+import UpdateProduct from './pages/UpdateProduct';
+import BidHistory from './pages/BidHistory';
+import Transaction from './pages/Transaction';
 
 function AppRoutes() {
     return (
@@ -31,10 +34,13 @@ function AppRoutes() {
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route element={<ProtectedRoute />}>
                 <Route path="/addproduct" element={<AddProduct />} />
-                <Route path="/bids" element={<Bids />} />
+                <Route path="/bids/:id" element={<Bids />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/bidrequest/:id" element={<BidRequest />} />
+                <Route path="/update-product/:id" element={<UpdateProduct />} />
                 <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/bid-history" element={<BidHistory />} />
+                <Route path="/transactions" element={<Transaction />} />
                 <Route path="/checkout" element={<Checkout />} />
             </Route>
             <Route path="/profile" element={<Profile />} />

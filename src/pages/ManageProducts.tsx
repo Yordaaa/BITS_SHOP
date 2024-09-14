@@ -108,7 +108,7 @@ const ManageProducts = () => {
             {openProductModal && (
                 <>
                     <div className="fixed inset-0 bg-black opacity-50" />
-                    <Modal show={openProductModal} position={modalPlacement} onClose={() => setOpenProductModal(false)}>
+                    <Modal show={openProductModal} position={modalPlacement} onClose={() => setOpenProductModal(false)} className="mt-40">
                         <Modal.Body>
                             <div className="p-10 rounded mx-auto flex ">
                                 <span className="fas fa-question-circle text-lg pb-1 pr-1"></span>

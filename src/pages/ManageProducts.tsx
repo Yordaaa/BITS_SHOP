@@ -13,12 +13,12 @@ const ManageProducts = () => {
     const [openProductModal, setOpenProductModal] = useState(false);
     const [deleteId, setDeleteId] = useState<string | null>(null);
     const [modalPlacement, setModalPlacement] = useState('center');
-    const [isDeleting, setIsDeleting] = useState(false); // New loading state for deletion
+    const [isDeleting, setIsDeleting] = useState(false);
 
     const handleDeleteProduct = async () => {
         try {
             if (deleteId) {
-                setIsDeleting(true); // Set loading state to true
+                setIsDeleting(true);
                 const res = await deleteProduct({ _id: deleteId });
                 if ('data' in res) {
                     const { data } = res as { data: RegistrationResponseProps };

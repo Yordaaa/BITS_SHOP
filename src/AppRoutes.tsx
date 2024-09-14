@@ -19,6 +19,9 @@ import NotFoundPage from './pages/NotFoundPage';
 import UpdateProduct from './pages/UpdateProduct';
 import BidHistory from './pages/BidHistory';
 import Transaction from './pages/Transaction';
+import ForgotPassword from './pages/authPages/ForgetPassword';
+import ResetPassword from './pages/authPages/ResetPassword';
+import ChangePassword from './pages/authPages/ChangePassword';
 
 function AppRoutes() {
     return (
@@ -49,6 +52,9 @@ function AppRoutes() {
             <Route path="/checkout/:id" element={<Checkout />} />
             <Route path="/manage" element={<ManageProducts />} />
             <Route path="*" element={<NotFoundPage />} />
+            <Route path="forget" element={<ForgotPassword />} />
+            <Route path="reset" element={<ResetPassword />} />
+            <Route path="change" element={<ChangePassword />} />
         </Routes>
     );
 }

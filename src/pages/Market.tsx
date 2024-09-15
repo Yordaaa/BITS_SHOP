@@ -10,8 +10,8 @@ import { getPriceValue } from '../helpers/getPriceValue';
 import ProductSkeleton from '../components/ProductSkeleton';
 
 const sortOptions = [
-    { name: 'Date: Old to New', value: '-createdAt', current: false },
-    { name: 'Date: New to Old', value: 'createdAt', current: false },
+    { name: 'Date: Old to New', value: 'createdAt', current: false },
+    { name: 'Date: New to Old', value: '-createdAt', current: false },
     { name: 'Price: Low to High', value: 'price', current: false },
     { name: 'Price: High to Low', value: '-price', current: false }
 ];

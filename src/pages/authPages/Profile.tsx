@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { ErrorResponse } from 'react-router-dom';
+import { ErrorResponse, useNavigate } from 'react-router-dom';
 import SideNav from '../../components/SideNav';
 import { useUpdateProfileImgMutation, useUpdateProfileMutation } from '../../redux/Features/useApiSlice';
 import avatar from '/avatar.png';
@@ -10,6 +10,7 @@ import { setCredentials } from '../../redux/Features/authSlice';
 import { selectUser } from '../../redux/Features/selector';
 function Profile() {
     const userInfo = useSelector(selectUser);
+    const navigate = useNavigate();
     console.log(userInfo);
     const [formData, setFormData] = useState({
         username: userInfo?.username || '',
@@ -66,6 +67,7 @@ function Profile() {
                 toast.success('Profile updated successfully');
                 console.log(data);
                 dispatch(setCredentials(data));
+                navigate('/settings');
             } else {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);

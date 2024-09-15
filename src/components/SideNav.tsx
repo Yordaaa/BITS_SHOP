@@ -6,14 +6,9 @@ function SideNav() {
         <div className="flex flex-col md:flex-row mx-auto  mt-5 h-screen">
             <nav className="text-white w-full p-4">
                 <ul className="mt-4">
+                    
                     <li>
-                        <Link to="/profile" className={`block py-2 pl-5 rounded-3xl ${location.pathname === '/profile' ? 'bg-gray-50 text-black border' : 'bg-[#505D68] my-1'}`}>
-                            <span className="hidden md:inline">Profile</span>
-                            <i className="fas fa-user md:hidden"></i>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/addproduct" className={`block py-2 pl-5 rounded-3xl ${location.pathname === '/addproduct' ? 'bg-gray-50 text-black border border-[#505D68]' : 'bg-[#505D68] my-1'}`}>
+                        <Link to="/addproduct" className={`block py-2 pl-5 rounded-3xl ${location.pathname === '/addproduct' ? 'bg-gray-50 text-black' : 'bg-[#505D68] my-1'}`}>
                             <span className="hidden md:inline">Add Product</span>
                             <i className="fas fa-plus md:hidden"></i>
                         </Link>
@@ -28,8 +23,8 @@ function SideNav() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/transactions" className={`block py-2 pl-5 rounded-3xl ${location.pathname === '/transactions' ? 'bg-gray-50 text-black' : 'bg-[#505D68] my-1'}`}>
-                            <span className="hidden md:inline">Transactions</span>
+                        <Link to="/manageaccount" className={`block py-2 pl-5 rounded-3xl ${location.pathname === '/manageaccount' ? 'bg-gray-50 text-black' : 'bg-[#505D68] my-1'}`}>
+                            <span className="hidden md:inline">Manage Acccount</span>
                             <i className="fas fa-exchange-alt md:hidden"></i>
                         </Link>
                     </li>

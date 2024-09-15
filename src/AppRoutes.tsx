@@ -18,10 +18,11 @@ import ManageProducts from './pages/ManageProducts';
 import NotFoundPage from './pages/NotFoundPage';
 import UpdateProduct from './pages/UpdateProduct';
 import BidHistory from './pages/BidHistory';
-import Transaction from './pages/Transaction';
 import ForgotPassword from './pages/authPages/ForgetPassword';
 import ResetPassword from './pages/authPages/ResetPassword';
 import ChangePassword from './pages/authPages/ChangePassword';
+import ManageAccount from './pages/ManageAccount.tsx';
+import Settings from './pages/Setting.tsx';
 
 function AppRoutes() {
     return (
@@ -33,8 +34,6 @@ function AppRoutes() {
             <Route element={<AuthRoute />}>
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
-                <Route path="/forget-password" element={<ForgotPassword />} />
-                <Route path="/reset-password/:resetToken/:userId" element={<ResetPassword />} />
             </Route>
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route element={<ProtectedRoute />}>
@@ -45,16 +44,19 @@ function AppRoutes() {
                 <Route path="/update-product/:id" element={<UpdateProduct />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/bid-history" element={<BidHistory />} />
-                <Route path="/transactions" element={<Transaction />} />
+                <Route path="/manageaccount" element={<ManageAccount />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="/change-password" element={<ChangePassword />} />
+                <Route path="change" element={<ChangePassword />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/bidrequest" element={<BidRequest />} />
+                <Route path="/bids" element={<Bids />} />
+                <Route path="/checkout/:id" element={<Checkout />} />
+                <Route path="/manage" element={<ManageProducts />} />
+                <Route path="/settings" element={<Settings />} />
             </Route>
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/bidrequest" element={<BidRequest />} />
-            <Route path="/bids" element={<Bids />} />
-            <Route path="/checkout/:id" element={<Checkout />} />
-            <Route path="/manage" element={<ManageProducts />} />
             <Route path="*" element={<NotFoundPage />} />
+            <Route path="forget" element={<ForgotPassword />} />
+            <Route path="reset" element={<ResetPassword />} />
         </Routes>
     );
 }

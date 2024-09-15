@@ -1,15 +1,20 @@
 import { useState } from 'react';
 import SideNav from '../components/SideNav';
+import { useTransactionsQuery } from '../redux/Features/paymentApiSlice';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../redux/Features/selector';
 
 const ManageAccount = () => {
     const [showBalance, setShowBalance] = useState<boolean>(false);
     const balance = 1000;
+    const userInfo = useSelector(selectUser);
     const transactions = [
         { type: 'Deposit', amount: 500, date: '2024-09-01' },
         { type: 'Withdraw', amount: 200, date: '2024-09-05' },
         { type: 'Deposit', amount: 300, date: '2024-09-10' }
     ];
-
+    const { data } = useTransactionsQuery(userInfo?._id);
+    console.log(data);
     return (
         <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
             <div className="md:col-span-1 h-full border-r-2">

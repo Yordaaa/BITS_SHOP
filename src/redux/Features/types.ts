@@ -123,3 +123,24 @@ export interface chapaPaymentUrlResProps {
         status: string;
     };
 }
+
+export interface transactionsProps {
+    _id: string;
+    productId: string;
+    sellerId: string;
+    customerFirstName: string;
+    customerLastName: string;
+    price: string;
+    customerEmail: string;
+    tx_ref: string;
+    productName: string;
+    status: 'pending' | 'success';
+    balance: string;
+    bits_transaction_charge: string;
+    chapa_transactio_charge: string;
+    created_at: string;
+    currency: string;
+    payment_method: string;
+    reference: string;
+    updated_at: string;
+}

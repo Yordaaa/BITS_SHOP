@@ -1,4 +1,5 @@
 import { apiSlice } from './apiSlice';
+import { transactionsProps } from './types';
 
 const paymentApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -11,8 +12,20 @@ const paymentApiSlice = apiSlice.injectEndpoints({
                     body: data
                 };
             }
+        }),
+        transactions: builder.query<transactionsProps[], string | undefined>({
+            query: (sellerId) => {
+                console.log(sellerId);
+                return {
+                    url: '/payment/get-transactios',
+                    method: 'GET',
+                    params: {
+                        sellerId
+                    }
+                };
+            }
         })
     })
 });
 
-export const { usePaymentMutation } = paymentApiSlice;
+export const { usePaymentMutation, useTransactionsQuery } = paymentApiSlice;

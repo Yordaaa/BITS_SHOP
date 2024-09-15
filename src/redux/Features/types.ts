@@ -110,3 +110,14 @@ export interface bidProps {
     createdAt: string;
     updatedAt: string;
 }
+
+export interface chapaPaymentUrlResProps {
+    success: boolean;
+    data: {
+        data: {
+            checkout_url: string;
+        };
+        message: string;
+        status: string;
+    };
+}

@@ -93,7 +93,7 @@ export const ProductDetail: React.FC = () => {
                                 <p className="text-gray-600">0910133245</p>
                             </div>
                             <div className="pt-5">
-                                <Link to={'/checkout'} className="mt-6 bg-primary text-white py-2 px-4 rounded-3xl hover:bg-opacity-80 transition">
+                                <Link to={`/checkout/${product?._id}`} className="mt-6 bg-primary text-white py-2 px-4 rounded-3xl hover:bg-opacity-80 transition">
                                     Buy now
                                 </Link>
                                 <Link

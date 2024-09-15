@@ -34,6 +34,8 @@ function AppRoutes() {
             <Route element={<AuthRoute />}>
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/forget-password" element={<ForgotPassword />} />
+                <Route path="/reset-password/:resetToken/:userId" element={<ResetPassword />} />
             </Route>
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route element={<ProtectedRoute />}>
@@ -46,7 +48,7 @@ function AppRoutes() {
                 <Route path="/bid-history" element={<BidHistory />} />
                 <Route path="/manageaccount" element={<ManageAccount />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="change" element={<ChangePassword />} />
+                <Route path="/change-password" element={<ChangePassword />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/bidrequest" element={<BidRequest />} />
                 <Route path="/bids" element={<Bids />} />
@@ -55,8 +57,6 @@ function AppRoutes() {
                 <Route path="/settings" element={<Settings />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
-            <Route path="forget" element={<ForgotPassword />} />
-            <Route path="reset" element={<ResetPassword />} />
         </Routes>
     );
 }

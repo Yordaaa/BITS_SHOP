@@ -14,6 +14,7 @@ function BidRequest() {
     const userInfo = useSelector(selectUser);
     const navigate = useNavigate();
 
+    console.log(product);
     const [bidRequest, { isLoading: loading }] = useBidRequestMutation();
 
     const onSubmitHandler = async (e: FormEvent) => {
@@ -31,7 +32,7 @@ function BidRequest() {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);
             }
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             toast.error('Unexpected error occurred');
         }

@@ -104,6 +104,8 @@ export interface bidProps {
     _id: string;
     productId: string;
     bidderId: string;
+    productName: string;
+    sellerId: string;
     message: string;
     amount: number;
     status: 'pending' | 'accepted' | 'rejected';

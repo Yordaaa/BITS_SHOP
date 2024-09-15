@@ -1,7 +1,6 @@
 import { ErrorResponse, Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-
 import { useDispatch } from 'react-redux';
 import { setCredentials } from '../../redux/Features/authSlice';
 import { useLoginMutation } from '../../redux/Features/authApiSlice';
@@ -10,6 +9,7 @@ import { resTypeProps } from '../../redux/Features/types';
 function Login() {
     const [schoolId, setSchoolId] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -61,7 +61,7 @@ function Login() {
                     </div>
                     <div className="relative">
                         <input
-                            type="password"
+                            type={showPassword ? 'text' : 'password'}
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary"
@@ -71,6 +71,9 @@ function Login() {
                         <div className="absolute inset-y-0 left-0 flex items-center pointer-events-none ps-2">
                             <i className="fas fa-key"></i>
                         </div>
+                        <button type="button" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <i className="fas fa-eye"></i> : <i className="fas fa-eye-slash"></i>}
+                        </button>
                     </div>
                     <div className="flex items-center justify-between py-4">
                         <div className="flex items-start">

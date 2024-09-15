@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function ChangePassword() {
+    const [showOldPassword, setShowOldPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     return (
         <div className="relative flex items-center justify-center h-fit max-w-screen-2xl mx-auto">
             <img
@@ -14,23 +18,37 @@ function ChangePassword() {
                 <hr className="w-16 h-1 mx-auto my-2 bg-primary border-0 rounded" />
 
                 <form>
-                    <div className="relative pt-3">
-                        <input type="password" className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary" placeholder="Enter old password" required />
+                    <div className="relative mt-3">
+                        <input type={showOldPassword ? 'text' : 'password'} className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary" placeholder="Enter old password" required />
                         <div className="absolute inset-y-0 left-0 flex items-center ps-2">
-                            <i className="fas fa-lock"></i>
+                            <i className="fas fa-key"></i>
                         </div>
+                        <button type="button" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500" onClick={() => setShowOldPassword(!showOldPassword)}>
+                            {showOldPassword ? <i className="fas fa-eye"></i> : <i className="fas fa-eye-slash"></i>}
+                        </button>
                     </div>
                     <div className="relative">
-                        <input type="password" className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary" placeholder="Enter new password" required />
+                        <input type={showPassword ? 'text' : 'password'} className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary" placeholder="Enter new password" required />
                         <div className="absolute inset-y-0 left-0 flex items-center ps-2">
-                            <i className="fas fa-lock"></i>
+                            <i className="fas fa-key"></i>
                         </div>
+                        <button type="button" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <i className="fas fa-eye"></i> : <i className="fas fa-eye-slash"></i>}
+                        </button>
                     </div>
                     <div className="relative">
-                        <input type="password" className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary" placeholder="Confirm new password" required />
+                        <input
+                            type={showConfirmPassword ? 'text' : 'password'}
+                            className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary"
+                            placeholder="Confirm new password"
+                            required
+                        />
                         <div className="absolute inset-y-0 left-0 flex items-center ps-2">
-                            <i className="fas fa-lock"></i>
+                            <i className="fas fa-key"></i>
                         </div>
+                        <button type="button" className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                            {showConfirmPassword ? <i className="fas fa-eye"></i> : <i className="fas fa-eye-slash"></i>}
+                        </button>
                     </div>
                     <button type="submit" className="w-full text-white bg-primary hover:opacity-90 transition-all duration-200 font-medium rounded-3xl text-sm px-5 py-2.5 text-center mt-5">
                         Change Password

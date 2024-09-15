@@ -33,7 +33,7 @@ const ManageProducts = () => {
         } finally {
             setDeleteId(null);
             setOpenProductModal(false);
-            setIsDeleting(false); // Reset loading state
+            setIsDeleting(false);
         }
     };
 
@@ -74,7 +74,7 @@ const ManageProducts = () => {
                                     </td>
                                 </tr>
                             ) : (
-                                products.map((product) => (
+                                products?.map((product) => (
                                     <tr key={product._id} className="border-b bg-gray-100 ">
                                         <td className="py-2 px-2 text-center">{product?._id}</td>
                                         <td className="truncate max-w-[100px] whitespace-nowrap overflow-hidden text-ellipsis">{product?.name}</td>

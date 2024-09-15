@@ -36,7 +36,7 @@ const BidHistory = () => {
                             <p className="mt-4 text-gray-600">You haven't placed any bids yet.</p>
                         </div>
                     ) : (
-                        bids.map((bid) => (
+                        bids?.map((bid) => (
                             <div key={bid._id} className="bg-white shadow-d rounded-lg p-5 border border-gray-200">
                                 <div className="flex justify-between items-center mb-4">
                                     <div>

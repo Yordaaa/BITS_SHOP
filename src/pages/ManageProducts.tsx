@@ -12,7 +12,7 @@ const ManageProducts = () => {
     const [deleteProduct] = useDeleteProductMutation();
     const [openProductModal, setOpenProductModal] = useState(false);
     const [deleteId, setDeleteId] = useState<string | null>(null);
-    const [modalPlacement, setModalPlacement] = useState('center');
+    const [modalPlacement] = useState('center');
     const [isDeleting, setIsDeleting] = useState(false);
 
     const handleDeleteProduct = async () => {
@@ -28,6 +28,7 @@ const ManageProducts = () => {
                     toast.error(error.data.message);
                 }
             }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             toast.error('Unexpected error occurred');
         } finally {

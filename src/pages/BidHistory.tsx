@@ -43,6 +43,7 @@ const BidHistory = () => {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);
             }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             toast.error('Unexpected error occurred');
         }
@@ -113,7 +114,7 @@ const BidHistory = () => {
                                             </div>
                                         ) : bid.status === 'accepted' ? (
                                             <div className="mt-4">
-                                                <p className="text-lg text-green-600">Your bid has been accepted! Would you like to proceed to payment?</p>
+                                                <p className="text-lg text-primary">Your bid has been accepted! Would you like to proceed to payment?</p>
                                                 <button
                                                     onClick={() => handleProceedToPayment(bid)}
                                                     disabled={loading}

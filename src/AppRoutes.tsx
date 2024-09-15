@@ -23,6 +23,7 @@ import ResetPassword from './pages/authPages/ResetPassword';
 import ChangePassword from './pages/authPages/ChangePassword';
 import ManageAccount from './pages/ManageAccount.tsx';
 import Settings from './pages/Setting.tsx';
+import ResetMessage from './pages/authPages/ResetMessage.tsx';
 
 function AppRoutes() {
     return (

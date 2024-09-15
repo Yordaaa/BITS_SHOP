@@ -265,11 +265,9 @@ export default function ElectronicsFilter() {
                                 ) : (
                                     <>
                                         <Product products={products?.products} />
-                                        {products?.resPerPage! > 8 && (
-                                            <div className="flex justify-center">
-                                                <Pagination currentPage={currentPage} totalPages={Math.ceil(products?.filteredProductCount! / products?.resPerPage!)} onPageChange={onPageChange} />
-                                            </div>
-                                        )}
+                                        <div className="flex justify-center">
+                                            <Pagination currentPage={currentPage} totalPages={Math.ceil(products?.filteredProductCount! / products?.resPerPage!)} onPageChange={onPageChange} />
+                                        </div>
                                     </>
                                 )}
                             </div>

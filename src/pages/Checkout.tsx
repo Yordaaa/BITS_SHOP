@@ -45,6 +45,7 @@ export const Checkout = () => {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);
             }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             toast.error('Unexpected error occurred');
         }

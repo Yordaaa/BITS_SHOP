@@ -10,7 +10,8 @@ const bidSlice = apiSlice.injectEndpoints({
                     method: 'POST',
                     body: data
                 };
-            }
+            },
+            invalidatesTags: ['bid']
         }),
         sellerGetBidRequest: builder.query<bidProps[], string | undefined>({
             query: (id) => {
@@ -18,7 +19,8 @@ const bidSlice = apiSlice.injectEndpoints({
                     url: `/bid/get-bid-request/${id}`,
                     method: 'GET'
                 };
-            }
+            },
+            providesTags: ['bid']
         }),
         bidHistory: builder.query<bidProps[], void>({
             query: () => {
@@ -26,9 +28,28 @@ const bidSlice = apiSlice.injectEndpoints({
                     url: `/bid/get-bid-history`,
                     method: 'GET'
                 };
-            }
+            },
+            providesTags: ['bid']
+        }),
+        bidReject: builder.mutation({
+            query: (bidId) => {
+                return {
+                    url: `/bid/reject-bid/${bidId}`,
+                    method: 'PUT'
+                };
+            },
+            invalidatesTags: ['bid']
+        }),
+        bidAccept: builder.mutation({
+            query: (bidId) => {
+                return {
+                    url: `/bid/accept-bid/${bidId}`,
+                    method: 'PUT'
+                };
+            },
+            invalidatesTags: ['bid']
         })
     })
 });
 
-export const { useBidRequestMutation, useSellerGetBidRequestQuery, useBidHistoryQuery } = bidSlice;
+export const { useBidRequestMutation, useSellerGetBidRequestQuery, useBidHistoryQuery, useBidRejectMutation, useBidAcceptMutation } = bidSlice;

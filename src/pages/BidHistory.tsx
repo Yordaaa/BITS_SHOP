@@ -113,7 +113,7 @@ const BidHistory = () => {
                                             </div>
                                         ) : bid.status === 'accepted' ? (
                                             <div className="mt-4">
-                                                <p className="text-lg text-green-600">Your bid has been accepted! Would you like to proceed to payment?</p>
+                                                <p className="text-lg text-primary">Your bid has been accepted! Would you like to proceed to payment?</p>
                                                 <button
                                                     onClick={() => handleProceedToPayment(bid)}
                                                     disabled={loading}

@@ -23,6 +23,7 @@ import ResetPassword from './pages/authPages/ResetPassword';
 import ChangePassword from './pages/authPages/ChangePassword';
 import ManageAccount from './pages/ManageAccount.tsx';
 import Settings from './pages/Setting.tsx';
+import ResetMessage from './pages/authPages/ResetMessage.tsx';
 
 function AppRoutes() {
     return (
@@ -46,7 +47,7 @@ function AppRoutes() {
                 <Route path="/bid-history" element={<BidHistory />} />
                 <Route path="/manageaccount" element={<ManageAccount />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="change" element={<ChangePassword />} />
+                <Route path="/change" element={<ChangePassword />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/bidrequest" element={<BidRequest />} />
                 <Route path="/bids" element={<Bids />} />
@@ -56,7 +57,8 @@ function AppRoutes() {
             </Route>
             <Route path="*" element={<NotFoundPage />} />
             <Route path="forget" element={<ForgotPassword />} />
-            <Route path="reset" element={<ResetPassword />} />
+            <Route path="/reset-password/:resetToken/:userId" element={<ResetPassword />} />
+            <Route path="resetmessage" element={<ResetMessage />} />
         </Routes>
     );
 }

@@ -1,4 +1,4 @@
-import { ErrorResponse, Link } from 'react-router-dom';
+import { ErrorResponse, Link, useNavigate } from 'react-router-dom';
 import { useForgotPasswordMutation } from '../../redux/Features/authApiSlice';
 import { FormEvent, useState } from 'react';
 import { RegistrationResponseProps } from '../../redux/Features/types';
@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 function ForgotPassword() {
     const [email, setEmail] = useState('');
-
+    const navigate = useNavigate();
     const [forgotPassword, { isLoading }] = useForgotPasswordMutation();
 
     const handleOnSubmit = async (e: FormEvent) => {
@@ -18,6 +18,7 @@ function ForgotPassword() {
                 const { data } = res as { data: RegistrationResponseProps };
                 toast.success(data.message);
                 setEmail('');
+                navigate('/resetmessage');
             } else {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);

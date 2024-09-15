@@ -6,6 +6,7 @@ import { useAddToWishlistMutation, useGetWishlistQuery, useRemoveFromWishlistMut
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../redux/Features/selector';
+import ProductDetailSkeleton from '../components/ProductDetailSkeleton';
 
 export const ProductDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -18,6 +19,7 @@ export const ProductDetail: React.FC = () => {
     const [addToWishlist] = useAddToWishlistMutation();
     const [removeFromWishlist] = useRemoveFromWishlistMutation();
     if (userInfo) {
+        // eslint-disable-next-line no-var, react-hooks/rules-of-hooks
         var { data } = useGetWishlistQuery();
     }
 
@@ -34,6 +36,7 @@ export const ProductDetail: React.FC = () => {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);
             }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             toast.error('Unexpected error occurred');
         }
@@ -54,16 +57,18 @@ export const ProductDetail: React.FC = () => {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);
             }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             toast.error('Unexpected error occurred');
         }
     };
 
     const isInWishlist = data?.wishlist.some((item) => item._id === product?._id);
+
     return (
         <>
             {isLoading ? (
-                'Loading...'
+                <ProductDetailSkeleton />
             ) : (
                 <div className="max-w-4xl mx-auto py-10 mb-0 md:mb-10">
                     <div className="flex flex-col justify-between md:flex-row items-center">

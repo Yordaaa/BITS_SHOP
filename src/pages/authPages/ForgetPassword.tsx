@@ -46,7 +46,7 @@ function ForgotPassword() {
                             onChange={(e) => setEmail(e.target.value)}
                             type="text"
                             className="py-3 ps-8 block w-full border-b-2 text-sm focus:border-b-primary"
-                            placeholder="Enter your email or school ID"
+                            placeholder="Enter your email"
                             required
                         />
                         <div className="absolute inset-y-0 left-0 flex items-center ps-2">

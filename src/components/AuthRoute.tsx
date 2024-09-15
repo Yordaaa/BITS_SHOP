@@ -6,7 +6,7 @@ function AuthRoute() {
     const userInfo = useSelector(selectUser);
 
     if (userInfo) {
-        return <Navigate to={'/profile'} />;
+        return <Navigate to={'/'} />;
     } else {
         return <Outlet />;
     }

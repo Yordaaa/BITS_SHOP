@@ -38,7 +38,7 @@ function Bids() {
                             <p className="mt-4 text-gray-600">There are no bids for this product.</p>
                         </div>
                     ) : (
-                        bids.map((bid) => (
+                        bids?.map((bid) => (
                             <div key={bid._id} className="bg-white shadow-lg rounded-lg p-6 border border-gray-200">
                                 <div className="flex justify-between items-center mb-4">
                                     <div>

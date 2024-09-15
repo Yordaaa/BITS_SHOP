@@ -23,7 +23,7 @@ function Bids() {
     const [bidReject] = useBidRejectMutation();
     const [bidAccept] = useBidAcceptMutation();
 
-    const handleBidReject = async (bidId: String) => {
+    const handleBidReject = async (bidId: string) => {
         try {
             const res = await bidReject(bidId);
             if ('data' in res) {
@@ -33,12 +33,13 @@ function Bids() {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);
             }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             toast.error('Unexpected error occurred');
         }
     };
 
-    const handleBidAccept = async (bidId: String) => {
+    const handleBidAccept = async (bidId: string) => {
         try {
             const res = await bidAccept(bidId);
             if ('data' in res) {
@@ -48,6 +49,7 @@ function Bids() {
                 const { error } = res as { error: ErrorResponse };
                 toast.error(error.data.message);
             }
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             toast.error('Unexpected error occurred');
         }

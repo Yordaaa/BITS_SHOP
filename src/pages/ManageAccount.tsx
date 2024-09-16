@@ -6,15 +6,22 @@ import { selectUser } from '../redux/Features/selector';
 
 const ManageAccount = () => {
     const [showBalance, setShowBalance] = useState<boolean>(false);
-    const balance = 1000;
+    const [expandedTransactions, setExpandedTransactions] = useState<Set<string>>(new Set());
     const userInfo = useSelector(selectUser);
-    const transactions = [
-        { type: 'Deposit', amount: 500, date: '2024-09-01' },
-        { type: 'Withdraw', amount: 200, date: '2024-09-05' },
-        { type: 'Deposit', amount: 300, date: '2024-09-10' }
-    ];
-    const { data } = useTransactionsQuery(userInfo?._id);
-    console.log(data);
+    const { data: transactions = [] } = useTransactionsQuery(userInfo?._id);
+    console.log(transactions);
+    const totalBalance = transactions.reduce((acc, transaction) => acc + parseFloat(transaction.balance), 0).toFixed(2);
+
+    const toggleTransaction = (transactionId: string) => {
+        const newExpandedTransactions = new Set(expandedTransactions);
+        if (newExpandedTransactions.has(transactionId)) {
+            newExpandedTransactions.delete(transactionId);
+        } else {
+            newExpandedTransactions.add(transactionId);
+        }
+        setExpandedTransactions(newExpandedTransactions);
+    };
+
     return (
         <section className="grid grid-cols-5 bg-white max-w-screen-xl mx-auto">
             <div className="md:col-span-1 h-full border-r-2">
@@ -26,7 +33,7 @@ const ManageAccount = () => {
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-semibold">Balance</h3>
                         <div className="flex items-center">
-                            <p className={`text-xl ${showBalance ? 'text-primary' : 'text-gray-300 '}`}>{showBalance ? `${balance.toFixed(2)}` : '*****'}</p>
+                            <p className={`text-xl ${showBalance ? 'text-primary' : 'text-gray-300 '}`}>{showBalance ? `${totalBalance} ETB` : '*****'}</p>
                             <button onClick={() => setShowBalance(!showBalance)} className="ml-2 text-gray-600">
                                 {showBalance ? <i className="fas fa-eye"></i> : <i className="fas fa-eye-slash"></i>}
                             </button>
@@ -35,11 +42,39 @@ const ManageAccount = () => {
                     <div className="border-t border-gray-200 pt-4">
                         <h3 className="text-lg font-semibold mb-2">Transactions</h3>
                         <ul className="divide-y divide-gray-200">
-                            {transactions.map((transaction, index) => (
-                                <li key={index} className="flex justify-between py-2">
-                                    <span className={`font-medium ${transaction.type === 'Withdraw' ? 'text-[#E3A57F]' : 'text-primary'}`}>{transaction.type}</span>
-                                    <span className="text-gray-700">{transaction.amount.toFixed(2)}</span>
-                                    <span className="text-gray-500">{transaction.date}</span>
+                            {transactions?.map((transaction) => (
+                                <li key={transaction._id} className="py-2">
+                                    <div className="flex justify-between items-center">
+                                        <span
+                                            className={`font-medium ${transaction.type === 'Withdraw' ? 'text-[#E3A57F]' : 'text-primary truncate max-w-[150px] whitespace-nowrap overflow-hidden text-ellipsis'}`}
+                                        >
+                                            {transaction.productName}
+                                        </span>
+                                        <span className="text-gray-700">{parseFloat(transaction.balance).toFixed(2)} ETB</span>
+                                        <span className="text-gray-500">{new Date(transaction.created_at).toLocaleDateString()}</span>
+                                        <button onClick={() => toggleTransaction(transaction._id)} className="ml-2 text-primary hover:underline">
+                                            {expandedTransactions.has(transaction._id) ? 'See Less' : 'See More'}
+                                        </button>
+                                    </div>
+                                    {expandedTransactions.has(transaction._id) && (
+                                        <div className="mt-2 p-4 bg-gray-50 rounded-lg">
+                                            <p className="text-lg font-bold">Customer Name</p>
+
+                                            <p className="text-gray-600">
+                                                {transaction.customerFirstName} {transaction.customerLastName}
+                                            </p>
+                                            <p className="text-lg font-bold">Transaction ID:</p>
+                                            <p className="text-gray-600">{transaction._id}</p>
+                                            <p className="text-lg font-bold">Bits Transaction Fees:</p>
+                                            <p className="text-gray-600">{parseFloat(transaction.bits_transaction_charge).toFixed(2)} ETB</p>
+                                            <p className="text-lg font-bold">Chapa Transaction Fees:</p>
+                                            <p className="text-gray-600">{parseFloat(transaction.chapa_transactio_charge).toFixed(2)} ETB</p>
+
+                                            <p className="text-lg font-bold">Product Price</p>
+
+                                            <p className="text-gray-600">{parseFloat(transaction.price).toFixed(2)} ETB</p>
+                                        </div>
+                                    )}
                                 </li>
                             ))}
                         </ul>

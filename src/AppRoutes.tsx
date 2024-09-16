@@ -37,6 +37,7 @@ function AppRoutes() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/forget-password" element={<ForgotPassword />} />
                 <Route path="/reset-password/:resetToken/:userId" element={<ResetPassword />} />
+                <Route path="/resetmessage" element={<ResetMessage />} />
             </Route>
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route element={<ProtectedRoute />}>

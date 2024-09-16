@@ -125,6 +125,7 @@ export interface chapaPaymentUrlResProps {
 }
 
 export interface transactionsProps {
+    type: string;
     _id: string;
     productId: string;
     sellerId: string;

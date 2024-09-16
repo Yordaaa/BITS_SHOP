@@ -8,9 +8,9 @@ const ManageAccount = () => {
     const [showBalance, setShowBalance] = useState<boolean>(false);
     const [expandedTransactions, setExpandedTransactions] = useState<Set<string>>(new Set());
     const userInfo = useSelector(selectUser);
+    console.log(userInfo);
     const { data: transactions = [] } = useTransactionsQuery(userInfo?._id);
     console.log(transactions);
-    const totalBalance = transactions.reduce((acc, transaction) => acc + parseFloat(transaction.balance), 0).toFixed(2);
 
     const toggleTransaction = (transactionId: string) => {
         const newExpandedTransactions = new Set(expandedTransactions);
@@ -33,7 +33,7 @@ const ManageAccount = () => {
                     <div className="flex items-center justify-between mb-4">
                         <h3 className="text-lg font-semibold">Balance</h3>
                         <div className="flex items-center">
-                            <p className={`text-xl ${showBalance ? 'text-primary' : 'text-gray-300 '}`}>{showBalance ? `${totalBalance} ETB` : '*****'}</p>
+                            <p className={`text-xl ${showBalance ? 'text-primary' : 'text-gray-300 '}`}>{showBalance ? `${userInfo?.account_balance} ETB` : '*****'}</p>
                             <button onClick={() => setShowBalance(!showBalance)} className="ml-2 text-gray-600">
                                 {showBalance ? <i className="fas fa-eye"></i> : <i className="fas fa-eye-slash"></i>}
                             </button>

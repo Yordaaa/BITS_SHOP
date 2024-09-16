@@ -43,7 +43,7 @@ const Settings = () => {
                             <span className="text-gray-900">Disabled</span>
                         </div>
                         <div className="flex items-center justify-between py-2">
-                            <Link to="/change" className="text-primary hover:underline">
+                            <Link to="/change-password" className="text-primary hover:underline">
                                 Change Password
                             </Link>
                         </div>

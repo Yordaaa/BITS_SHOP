@@ -12,6 +12,8 @@ export interface UserProps {
         secure_url: string;
     };
     isAdmin: boolean;
+
+    account_balance: number;
     purchasedProdcuts: productResTypeProps[];
     createdAt: string;
     updatedAt: string;

@@ -61,9 +61,9 @@ function Product({ products }: ProductProps) {
             {products?.map((product) => {
                 const isInWishlist = data?.wishlist.some((item) => item._id === product._id);
                 return (
-                    <div key={product._id} className="group relative bg-white border rounded-lg shadow-md overflow-hidden">
+                    <div key={product?._id} className="group relative bg-white border rounded-lg shadow-md overflow-hidden">
                         <div className="relative">
-                            <img src={product.images?.[0].secure_url} alt={product.name} className="w-full h-48 object-contain" />
+                            <img src={product?.images?.[0]?.secure_url} alt={product?.name} className="w-full h-48 object-contain" />
                             <div className="absolute bottom-0 left-0 right-0 bg-gray-700 bg-opacity-80 text-white hover:text-primary text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <Link to={`/product/${product._id}`} className="w-full py-2">
                                     Show Details
@@ -71,10 +71,10 @@ function Product({ products }: ProductProps) {
                             </div>
                         </div>
                         <div className="p-4">
-                            <h2 className="text-lg font-semibold truncate">{product.name}</h2>
-                            <p className="mt-2 text-gray-600 truncate">{product.description}</p>
+                            <h2 className="text-lg font-semibold truncate">{product?.name}</h2>
+                            <p className="mt-2 text-gray-600 truncate">{product?.description}</p>
                             <div className="flex justify-between items-center">
-                                <div className="mt-4 text-xl font-bold">{product.price} ETB</div>
+                                <div className="mt-4 text-xl font-bold">{product?.price} ETB</div>
                                 {isInWishlist ? (
                                     <button
                                         onClick={() => handleRemoveFromWishlsit(product._id)}
